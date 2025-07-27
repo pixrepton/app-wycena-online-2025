@@ -1,0 +1,274 @@
+INSTRUKCJA TERMINOLOGII - TOP-INSTAL HEAT PUMP CALCULATOR
+================================================================
+
+OGÓLNA ARCHITEKTURA APLIKACJI
+=============================
+
+1. GŁÓWNE KOMPONENTY
+-------------------
+- "Welcome Screen" / "Ekran Powitalny" - strona startowa z 4 kartami trybów
+- "Mode Forms" / "Formularze Wstępne" - krótkie formularze przed kalkulatorami
+- "Dedicated Calculators" / "Dedykowane Kalkulatory" - osobne kalkulatory dla każdego trybu
+- "Results System" / "System Wyników" - wyświetlanie rekomendacji pomp
+
+2. SYSTEM ROUTINGU
+-----------------
+- "proceedToCalculator()" - główna funkcja routingu między trybami
+- "intelligentModeHandler.js" - obsługa logiki 4 trybów
+- "showModeForm()" - pokazanie formularza wstępnego trybu
+- "activateMode()" - STARA funkcja (usunięta) - powodowała błędy routingu
+
+CZTERY TRYBY APLIKACJI
+=====================
+
+MODE 1 - PEŁNY KALKULATOR
+-------------------------
+Nazwa systemu: "heatCalcFormFull"
+Opis: Kompleksowy 6-krokowy kalkulator z pełnym formularzem
+Funkcje:
+- Parametry budynku (powierzchnia, wysokość, izolacja)
+- Rodzaj ogrzewania
+- Lokalizacja i strefa klimatyczna
+- Obliczenia przez API cieplo.app
+- Algorytm ZORDON 3.0
+
+MODE 2 - AI ANALIZA PROJEKTU
+----------------------------
+Nazwa systemu: "heatCalcMode2"
+Opis: Upload PDF projektu + analiza AI
+Komponenty:
+- "PDF Upload Handler" - obsługa przesyłania plików
+- "Groq AI Integration" - analiza dokumentów przez AI
+- "startAIPDFAnalysis()" - główna funkcja analizy
+- Model AI: "llama-3.3-70b-versatile"
+Backend: "/api/analyze-pdf" endpoint
+
+MODE 3 - AUDYT ENERGETYCZNY
+---------------------------
+Nazwa systemu: "heatCalcMode3"
+Opis: Obliczenia na podstawie danych z audytu energetycznego
+Parametry:
+- Powierzchnia budynku
+- Roczne zużycie energii (kWh)
+- Standard energetyczny budynku
+- Poziom izolacji
+Formuła: (zużycie roczne / 2000) × współczynnik × izolacja
+
+MODE 4 - ZNANA MOC
+------------------
+Nazwa systemu: "heatCalcMode4"
+Opis: Bezpośrednie wprowadzenie znanej mocy pompy
+Parametry:
+- Moc pompy (kW)
+- Źródło informacji o mocy
+- Powierzchnia budynku (opcjonalnie)
+Cel: Konfiguracja i dobór modelu bez obliczeń
+
+FORMULARZE WSTĘPNE
+==================
+
+FORM-MODE1
+----------
+- Kod pocztowy (walidacja XX-XXX)
+- Typ budynku (radio buttons z ikonami)
+- Cel pompy ciepła (ogrzewanie/cwu/klimatyzacja)
+
+FORM-MODE2  
+----------
+- Kod pocztowy
+- Typ budynku  
+- Cel pompy ciepła
+- Upload PDF (opcjonalny na tym etapie)
+
+FORM-MODE3
+----------
+- Kod pocztowy
+- Typ budynku
+- Cel pompy ciepła
+
+FORM-MODE4
+----------
+- Kod pocztowy
+- Typ budynku
+- Cel pompy ciepła
+- Znana moc pompy (wymagane)
+
+SYSTEM WYNIKÓW
+==============
+
+RESULTS RENDERER
+---------------
+- "resultsRenderer.js" - główny moduł wyświetlania
+- "generatePumpRecommendations()" - lista modeli Panasonic
+- "Zordon 3.0" - algorytm dopasowania pomp
+- Wyświetlanie: moc, cena, specyfikacja
+
+KOLEKCJA POMP PANASONIC
+----------------------
+- Aquarea T-CAP 9kW, 12kW, 16kW
+- Aquarea J Series
+- Automatyczny dobór na podstawie mocy
+
+BACKEND KOMPONENTY
+==================
+
+PYTHON FLASK API
+----------------
+- "src/app.py" - główna aplikacja Flask
+- "src/services/pdf_analyzer.py" - serwis analizy PDF
+- "src/api/routes.py" - endpointy API
+
+GŁÓWNE ENDPOINTY
+---------------
+- "/api/analyze-pdf" - analiza dokumentów AI
+- "/api/health" - status aplikacji
+- Port: 5000
+
+GROQ AI INTEGRACJA
+-----------------
+- Model: "llama-3.3-70b-versatile" 
+- Klucz: GROQ_API_KEY (zmienna środowiskowa)
+- Funkcja: ekstrakcja parametrów z PDF
+
+FRONTEND ARCHITEKTURA
+====================
+
+GŁÓWNE PLIKI JAVASCRIPT
+-----------------------
+- "intelligentModeHandler.js" - logika 4 trybów
+- "pdfUploadHandler.js" - obsługa plików PDF  
+- "formDataProcessor.js" - przetwarzanie formularzy
+- "resultsRenderer.js" - wyświetlanie wyników
+- "tabNavigation.js" - nawigacja między krokami
+
+STYLING
+-------
+- "kalkulator_style.css" - główne style
+- "premium-visual-enhancements.css" - zaawansowane style
+- Design: Hetzner-inspired (profesjonalny, techniczny)
+- Kolory: PRUM (czerwień TOP-INSTAL)
+
+KLUCZOWE SELEKTORY CSS
+---------------------
+- ".mode-card" - karty trybów na welcome screen
+- ".mode-container" - kontenery dedykowanych kalkulatorów  
+- ".formularz" - główne formularze
+- ".action-btn" - przyciski akcji
+- ".hidden" - ukrywanie elementów
+
+STAN APLIKACJI
+==============
+
+ZMIENNE GLOBALNE
+---------------
+- "window.appState" - stan aplikacji
+- "window.currentTab" - aktualny krok kalkulatora
+- "window.sections" - sekcje nawigacji
+
+LOCAL STORAGE
+------------
+- "selectedMode" - wybrany tryb
+- "welcomeFormData" - dane z formularzy wstępnych
+
+WALIDACJA FORMULARZY
+===================
+
+WYMAGANE POLA
+------------
+- Kod pocztowy: format XX-XXX (Polska)
+- Typ budynku: wybór z radio buttons
+- Cel pompy: wybór z radio buttons
+- Mode 4: dodatkowo moc pompy (3-50 kW)
+
+FUNKCJE WALIDACJI
+----------------
+- "validateFormMode()" - walidacja konkretnego trybu
+- "setupFormValidation()" - inicjalizacja walidacji
+- Stan przycisków: enabled/disabled na podstawie walidacji
+
+DEBUGOWANIE I LOGI
+==================
+
+CONSOLE LOGI
+-----------
+- "🚀" - inicjalizacja systemów
+- "✅" - sukces operacji  
+- "❌" - błędy
+- "🎯" - routing między trybami
+- "🔥" - rozpoczęcie obliczeń
+
+TYPOWE KOMUNIKATY
+----------------
+- "Proceeding to calculator for mode2" - poprawny routing
+- "Mode X Calculator shown" - sukces wyświetlenia kalkulatora
+- "calculator not found" - błąd routingu
+
+NAJCZĘSTSZE PROBLEMY
+===================
+
+ROUTING ISSUES
+-------------
+Problem: "Wszystkie tryby prowadzą do Mode 1"
+Przyczyna: Stare funkcje activateMode() przesłaniają nowe
+Rozwiązanie: Usunięcie starych funkcji z HTML
+
+KALKULATORY NIEWIDOCZNE  
+----------------------
+Problem: Routing działa ale kalkulatory nie widać
+Przyczyna: Brak klas CSS (active, display:block)
+Rozwiązanie: Dodanie wszystkich wymaganych klas
+
+PDF UPLOAD PROBLEMY
+------------------
+Problem: Upload nie działa
+Przyczyna: Brak GROQ_API_KEY lub błędny endpoint
+Rozwiązanie: Sprawdzenie zmiennych środowiskowych
+
+WSPÓŁPRACA Z DEWELOPEREM
+========================
+
+ZGŁASZANIE PROBLEMÓW
+-------------------
+1. Podaj numer trybu (Mode 1/2/3/4)
+2. Opisz oczekiwane vs rzeczywiste zachowanie
+3. Dołącz screenshoty jeśli możliwe
+4. Wskaż kroki do reprodukcji
+
+PROŚBY O ZMIANY
+--------------
+1. Określ konkretny tryb/komponent
+2. Opisz pożądaną funkcjonalność
+3. Wskaż kontekst użycia
+4. Określ priorytet (krytyczny/ważny/niski)
+
+TERMINOLOGIA DO UŻYCIA
+=====================
+- Mode 1/2/3/4 zamiast "pierwszy kalkulator"
+- "Welcome Screen" zamiast "strona główna"  
+- "Dedicated Calculator" zamiast "osobny formularz"
+- "PDF Upload" zamiast "przesyłanie pliku"
+- "AI Analysis" zamiast "analiza automatyczna"
+- "Routing" zamiast "przekierowanie"
+- "Form Validation" zamiast "sprawdzanie formularza"
+
+AKTUALIZACJE SYSTEMU
+===================
+
+OSTATNIE ZMIANY (25.07.2025)
+----------------------------
+- Usunięcie starych funkcji activateMode() 
+- Naprawienie routingu dla wszystkich trybów
+- Dodanie właściwego wyświetlania kalkulatorów
+- Aktualizacja modelu AI na llama-3.3-70b-versatile
+- Rozdzielenie logiki na 4 dedykowane kalkulatory
+
+PLANY ROZWOJU
+------------
+- Dodanie kolejnych modeli pomp Panasonic
+- Rozszerzenie analizy AI o więcej parametrów
+- Integracja z systemem CRM TOP-INSTAL
+- Eksport wyników do różnych formatów
+
+================================================================
+KONIEC INSTRUKCJI - Wersja 1.0 - 25.07.2025
+================================================================

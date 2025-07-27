@@ -1,0 +1,979 @@
+/* =====================================================
+   PREMIUM VISUAL ENHANCEMENTS FOR TOP-INSTAL CALCULATOR
+   ===================================================== */
+
+/* Note: This file provides visual enhancements on top of the main kalkulator_style.css */
+
+/* ==================== VISUAL ENHANCEMENTS ==================== */
+/* Font smoothing and rendering improvements */
+body {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* Technical numbers styling */
+.result-value, .summary-value, .card-power, .card-price,
+.pump-power, .technical-data {
+  font-family: 'Inter', monospace !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ==================== PREMIUM GLASSMORPHISM EFFECTS ==================== */
+/* Main application container with subtle backdrop */
+#top-instal-calc.wrapper {
+  background: linear-gradient(135deg, 
+    rgba(250, 251, 252, 0.9) 0%,
+    rgba(241, 245, 249, 0.9) 50%,
+    rgba(248, 250, 252, 0.9) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  min-height: 100vh !important;
+  position: relative !important;
+}
+
+/* Premium glassmorphism for all card sections */
+.section {
+  background: var(--color-background-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: var(--shadow-glass), var(--shadow-lg) !important;
+  border-radius: var(--radius-2xl) !important;
+  transition: all var(--transition-normal) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Subtle glassmorphism hover effect for sections */
+.section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(194, 1, 24, 0.3) 50%, 
+    transparent 100%) !important;
+  opacity: 0 !important;
+  transition: opacity var(--transition-normal) !important;
+}
+
+.section.active::before {
+  opacity: 1 !important;
+}
+
+/* Enhanced header with glassmorphism */
+.authority-header {
+  background: var(--color-background-card) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--shadow-glass), var(--shadow-xl) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--spacing-3xl) !important;
+  margin-bottom: var(--spacing-3xl) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Subtle animated background for header */
+.authority-header::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(194, 1, 24, 0.05) 50%, 
+    transparent 100%) !important;
+  animation: shimmer-subtle 8s ease-in-out infinite !important;
+}
+
+@keyframes shimmer-subtle {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+/* ==================== PREMIUM FORM CONTROLS ==================== */
+/* Enhanced input fields with glassmorphism */
+input, select, textarea {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-base) !important;
+  color: #1e293b !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  transition: all var(--transition-normal) !important;
+  box-shadow: var(--shadow-sm) !important;
+  outline: none !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: var(--color-accent-red) !important;
+    box-shadow: 0 0 0 3px rgba(194, 1, 24, 0.1), var(--shadow-md) !important;
+  }
+
+  input:hover, select:hover, textarea:hover {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: var(--color-primary-light) !important;
+  }
+
+/* Enhanced labels with better typography */
+label {
+    font-family: var(--font-primary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    color: var(--color-black-main) !important;
+    letter-spacing: 0.01em !important;
+    margin-bottom: var(--spacing-sm) !important;
+    display: block !important;
+}
+
+/* Uniwersalne selektory dla wszystkich typów labelek */
+label,
+.form-label,
+label.form-label,
+label.with-tooltip,
+label.label-with-tooltip,
+label[for],
+form label {
+    color: var(--color-black-main) !important;
+    font-family: var(--font-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* ==================== ULTRA-PREMIUM BUTTONS ==================== */
+/* Primary button with advanced glassmorphism and animations */
+.btn-next1, .btn-next, .btn-next2, .btn-next3, .btn-next4, .btn-next5, .btn-next6, .btn-next7, 
+.btn-finish, .navigation-btn, button[type="button"], input[type="submit"] {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.025em !important;
+  color: white !important;
+  background: linear-gradient(135deg, 
+    var(--color-accent-red) 0%, 
+    var(--color-accent-red-light) 50%, 
+    var(--color-primary-main) 100%) !important;
+  border: none !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--spacing-lg) var(--spacing-2xl) !important;
+  min-width: 180px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: all var(--transition-normal) !important;
+  box-shadow: var(--shadow-lg), 
+              0 0 20px rgba(194, 1, 24, 0.25) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Stabilne hover bez przesuwania */
+.btn-next1:hover, .btn-next:hover, .btn-next2:hover, .btn-next3:hover, .btn-next4:hover, 
+.btn-next5:hover, .btn-next6:hover, .btn-next7:hover, .btn-finish:hover, 
+.navigation-btn:hover, button[type="button"]:hover, input[type="submit"]:hover {
+  box-shadow: var(--shadow-lg), 
+              0 0 25px rgba(194, 1, 24, 0.3) !important;
+  background: linear-gradient(135deg, 
+    var(--color-accent-red-light) 0%, 
+    var(--color-accent-red) 50%, 
+    var(--color-primary-deep) 100%) !important;
+}
+
+/* Secondary button styling */
+.btn-prev {
+  background: linear-gradient(135deg, 
+    var(--color-text-muted) 0%, 
+    var(--color-text-secondary) 100%) !important;
+  box-shadow: var(--shadow-md), 
+              0 0 15px rgba(100, 116, 139, 0.2) !important;
+}
+
+.btn-prev:hover {
+  background: linear-gradient(135deg, 
+    var(--color-text-secondary) 0%, 
+    var(--color-text-primary) 100%) !important;
+  box-shadow: var(--shadow-md), 
+              0 0 20px rgba(100, 116, 139, 0.25) !important;
+}
+
+/* Stabilne active state */
+.btn-next1:active, .btn-next:active, .btn-next2:active, .btn-next3:active, .btn-next4:active, 
+.btn-next5:active, .btn-next6:active, .btn-next7:active, .btn-finish:active, 
+.navigation-btn:active, button[type="button"]:active, input[type="submit"]:active {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ==================== ENHANCED PROGRESS BAR ==================== */
+/* Premium progress bar with glassmorphism */
+.progress-bar-premium {
+  background: var(--color-background-glass) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--radius-full) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  margin: var(--spacing-2xl) 0 !important;
+  box-shadow: var(--shadow-md) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Enhanced step indicators */
+.progress-bar-premium .step {
+  background: var(--color-background-card) !important;
+  border: 2px solid var(--color-border-subtle) !important;
+  color: var(--color-text-muted) !important;
+  font-family: var(--font-technical) !important;
+  font-weight: 600 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: var(--radius-full) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all var(--transition-normal) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.progress-bar-premium .step.active {
+  background: linear-gradient(135deg, 
+    var(--color-accent-red) 0%, 
+    var(--color-accent-red-light) 100%) !important;
+  border-color: var(--color-accent-red) !important;
+  color: white !important;
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-lg), 
+              0 0 20px rgba(194, 1, 24, 0.3) !important;
+}
+
+.progress-bar-premium .step.completed {
+  background: linear-gradient(135deg, 
+    var(--color-primary-main) 0%, 
+    var(--color-primary-light) 100%) !important;
+  border-color: var(--color-primary-main) !important;
+  color: white !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ==================== RESULTS SECTION ENHANCEMENTS ==================== */
+/* Premium results cards with advanced glassmorphism */
+.result-card, .pump-recommendation-card, .summary-item {
+  background: var(--color-background-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--spacing-2xl) !important;
+  margin-bottom: var(--spacing-xl) !important;
+  box-shadow: var(--shadow-glass), var(--shadow-lg) !important;
+  transition: all var(--transition-normal) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.result-card:hover, .pump-recommendation-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-glass), var(--shadow-xl) !important;
+  border-color: rgba(194, 1, 24, 0.2) !important;
+}
+
+/* Enhanced result values with technical font */
+.result-value, .summary-value, .card-power, .card-price {
+  font-family: var(--font-technical) !important;
+  font-size: var(--font-size-3xl) !important;
+  font-weight: 700 !important;
+  color: var(--color-primary-main) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+}
+
+.result-label, .summary-label {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 500 !important;
+  color: var(--color-text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ==================== TOOLTIP SYSTEM IMPROVEMENTS ==================== */
+/* Enhanced tooltips with intelligent positioning */
+.tooltip-content {
+  position: absolute !important;
+  z-index: 9999 !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 400 !important;
+  background: var(--color-primary-deep) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-lg) !important;
+  box-shadow: var(--shadow-xl) !important;
+  max-width: 280px !important;
+  min-width: 200px !important;
+  line-height: 1.5 !important;
+  color: white !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(8px) scale(0.95) !important;
+  transition: all var(--transition-normal) !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.tooltip-content.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Pozycjonowanie w dół (tooltip pokazuje się pod ikoną) */
+.tooltip-content.tooltip-bottom {
+  top: calc(100% + 8px) !important;
+  transform-origin: top center !important;
+}
+
+.tooltip-content.tooltip-bottom.active {
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Pozycjonowanie w górę (tooltip pokazuje się nad ikoną) */
+.tooltip-content.tooltip-top {
+  bottom: calc(100% + 8px) !important;
+  transform-origin: bottom center !important;
+}
+
+.tooltip-content.tooltip-top.active {
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Pozycjonowanie od lewej strony */
+.tooltip-content.tooltip-left {
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Pozycjonowanie od prawej strony */
+.tooltip-content.tooltip-right {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Pozycjonowanie wyśrodkowane */
+.tooltip-content.tooltip-center {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Strzałki tooltipów */
+.tooltip-content::before {
+  content: '' !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-style: solid !important;
+}
+
+/* Strzałka dla tooltip-bottom */
+.tooltip-content.tooltip-bottom::before {
+  top: -6px !important;
+  border-width: 0 6px 6px 6px !important;
+  border-color: transparent transparent var(--color-primary-deep) transparent !important;
+}
+
+.tooltip-content.tooltip-bottom.tooltip-left::before {
+  left: 16px !important;
+}
+
+.tooltip-content.tooltip-bottom.tooltip-right::before {
+  right: 16px !important;
+}
+
+/* Strzałka dla tooltip-top */
+.tooltip-content.tooltip-top::before {
+  bottom: -6px !important;
+  border-width: 6px 6px 0 6px !important;
+  border-color: var(--color-primary-deep) transparent transparent transparent !important;
+}
+
+.tooltip-content.tooltip-top.tooltip-left::before {
+  left: 16px !important;
+}
+
+.tooltip-content.tooltip-top.tooltip-right::before {
+  right: 16px !important;
+}
+
+/* Legacy support */
+.tooltip-text {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 400 !important;
+  background: var(--color-primary-deep) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-lg) !important;
+  box-shadow: var(--shadow-xl) !important;
+  max-width: 280px !important;
+  line-height: 1.5 !important;
+  color: white !important;
+}
+
+.tooltip-icon-wrapper {
+  position: relative !important;
+  display: inline-block !important;
+  transition: all var(--transition-fast) !important;
+  border-radius: var(--radius-full) !important;
+  padding: var(--spacing-xs) !important;
+}
+
+.tooltip-icon-wrapper:hover {
+  background: rgba(194, 1, 24, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ==================== ENHANCED BADGES AND LABELS ==================== */
+/* Premium badges with glassmorphism */
+.card-badge, .pump-card-badge {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-xs) !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, 
+    var(--color-accent-red) 0%, 
+    var(--color-accent-red-light) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--radius-full) !important;
+  padding: var(--spacing-sm) var(--spacing-lg) !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: var(--shadow-md), 
+              0 0 15px rgba(194, 1, 24, 0.3) !important;
+}
+
+/* ==================== STABLE MOBILE RESPONSIVENESS ==================== */
+/* Optimized mobile experience without heavy effects */
+@media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 1.75rem;   /* Smaller on mobile */
+    --font-size-3xl: 1.5rem;    
+    --font-size-2xl: 1.25rem;   
+    --spacing-3xl: 1.5rem;      /* Reduced spacing */
+  }
+
+  /* Mobile tooltip adjustments */
+  .tooltip-content {
+    max-width: calc(100vw - 40px) !important;
+    min-width: 180px !important;
+    padding: var(--spacing-md) !important;
+    font-size: var(--font-size-xs) !important;
+    min-height: 60px !important;
+  }
+
+  .tooltip-content.tooltip-left,
+  .tooltip-content.tooltip-right {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) translateY(8px) scale(0.95) !important;
+  }
+
+  .tooltip-content.tooltip-left.active,
+  .tooltip-content.tooltip-right.active {
+    transform: translateX(-50%) translateY(0) scale(1) !important;
+  }
+
+  .tooltip-content.tooltip-bottom.tooltip-left::before,
+  .tooltip-content.tooltip-bottom.tooltip-right::before,
+  .tooltip-content.tooltip-top.tooltip-left::before,
+  .tooltip-content.tooltip-top.tooltip-right::before {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .section {
+    margin: var(--spacing-lg) var(--spacing-sm) !important;
+    padding: var(--spacing-lg) !important;
+    border-radius: var(--radius-lg) !important;
+    /* Remove heavy effects on mobile */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .authority-header {
+    padding: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-lg) !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .btn-next1, .btn-next, .btn-next2, .btn-next3, .btn-next4, .btn-next5, .btn-next6, .btn-next7, 
+  .btn-finish, .btn-prev, .navigation-btn, button[type="button"], input[type="submit"] {
+    width: 100% !important;
+    max-width: 260px !important;
+    margin: var(--spacing-sm) 0 !important;
+    padding: var(--spacing-md) var(--spacing-lg) !important;
+    /* Remove transform effects */
+    transform: none !important;
+  }
+
+  .btn-next1:hover, .btn-next:hover, .btn-next2:hover, .btn-next3:hover, .btn-next4:hover, 
+  .btn-next5:hover, .btn-next6:hover, .btn-next7:hover, .btn-finish:hover, 
+  .btn-prev:hover, .navigation-btn:hover,button[type="button"]:hover, input[type="submit"]:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+  }
+
+  .progress-bar-premium .step {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: var(--font-size-xs) !important;
+    transform: none !important;
+  }
+
+  .progress-bar-premium .step.active {
+    transform: none !important;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    padding: var(--spacing-md) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    transform: none !important;
+  }
+
+  input:hover, select:hover, textarea:hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin: var(--spacing-sm) var(--spacing-xs) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .progress-bar-premium {
+    padding: var(--spacing-sm) !important;
+    margin: var(--spacing-md) 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .progress-bar-premium .step {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 10px !important;
+  }
+
+  /* Disable all heavy effects on small mobile */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    animation: none !important;
+    transition: opacity 0.2s ease, background-color 0.2s ease !important;
+  }
+}
+
+/* ==================== MICRO-ANIMATIONS AND INTERACTIONS ==================== */
+/* Subtle entrance animations for better UX */
+@keyframes slideInGlass {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(16px);
+  }
+}
+
+.section.active {
+  animation: slideInGlass 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Smooth focus transitions for accessibility */
+*:focus {
+  outline: 2px solid var(--color-accent-red) !important;
+  outline-offset: 2px !important;
+  transition: outline var(--transition-fast) !important;
+}
+
+/* Improved checkbox styling */
+input[type="checkbox"] {
+  appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: var(--color-background-card) !important;
+  border: 2px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-sm) !important;
+  position: relative !important;
+  cursor: pointer !important;
+  transition: all var(--transition-fast) !important;
+}
+
+input[type="checkbox"]:checked {
+  background: var(--color-accent-red) !important;
+  border-color: var(--color-accent-red) !important;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓' !important;
+  position: absolute !important;
+  color: white !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: bold !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Enhanced climate map container */
+.climate-map {
+  background: var(--color-background-card) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--spacing-xl) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+/* ==================== ACCESSIBILITY IMPROVEMENTS ==================== */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #000000;
+    --color-text-secondary: #333333;
+    --color-border-subtle: #666666;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode preparation (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-main: #0f172a;
+    --color-background-card: rgba(30, 41, 59, 0.85);
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #cbd5e1;
+  }
+}
+
+/* ==================== CUSTOM ENGINEERING-STYLE ENHANCEMENTS ==================== */
+/* Enhanced result cards with more technical, engineering-focused design */
+.result-card, .pump-recommendation-card, .summary-item {
+  backdrop-filter: blur(8px) !important; /* mniej rozmycia */
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1.5px solid #e2e8f0 !important; /* subtelniejszy, techniczny border */
+  box-shadow: 0 4px 18px rgba(30,41,59,0.07), 0 1px 2px rgba(45,54,87,0.09) !important;
+}
+
+/* Wyraźniejsze, bardziej inżynierskie podziały w podsumowaniu */
+.result-body {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid #e2e8f0 !important;
+  background: rgba(255,255,255,0.95) !important;
+  margin-top: var(--spacing-md) !important;
+  margin-bottom: var(--spacing-md) !important;
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  box-shadow: none !important;
+}
+
+/* Podkreślone wiersze z danymi */
+.result-item {
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding-bottom: var(--spacing-xs) !important;
+  margin-bottom: var(--spacing-xs) !important;
+}
+.result-item:last-child {
+  border-bottom: none !important;
+}
+
+/* Wyraźniejsze liczby i wartości techniczne */
+.result-value, .summary-value, .card-power, .card-price {
+  font-family: var(--font-technical) !important;
+  font-size: var(--font-size-2xl) !important;
+  font-weight: 700 !important;
+  color: var(--color-primary-main) !important;
+  letter-spacing: 0 !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+/* Engineering badge – dla sekcji wyników */
+.engineering-badge {
+  display: inline-block;
+  font-family: var(--font-technical);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary-main);
+  background: #f4f7fb;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-full);
+  padding: 2px 12px;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-xs);
+  margin-top: -12px;
+}
+
+/* Zmniejszenie blur na tooltipach z danymi technicznymi */
+.tooltip-text {
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Mniej cienia, więcej inżynierskiej prostoty na kartach pomp */
+.pump-recommendation-card {
+  box-shadow: 0 2px 8px rgba(45,54,87,0.07), 0 1.5px 1.5px rgba(194,1,24,0.07) !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+/* Delikatniejsze efekty na hover (podkreśl tylko border) */
+.result-card:hover, .pump-recommendation-card:hover {
+  border-color: #2d3657 !important;
+  box-shadow: 0 6px 20px rgba(45,54,87,0.10) !important;
+}
+
+/* Sekcja wyników – ultra-premium card */
+.result-card {
+  background: rgba(255,255,255,0.96) !important;
+  box-shadow: 0 10px 32px rgba(45,54,87,0.10), 0 1.5px 4px rgba(30,41,59,0.05) !important;
+  border-radius: 1.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 2.5rem 2rem !important;
+  margin-bottom: 2.5rem !important;
+  transition: box-shadow .25s cubic-bezier(.4,0,.2,1);
+}
+
+.result-card:hover {
+  box-shadow: 0 16px 40px rgba(45,54,87,0.16), 0 4px 12px rgba(30,41,59,0.07) !important;
+  border-color: #bfc6d1 !important;
+}
+
+/* Layout – duże odstępy, zero zbędnych ramek */
+.result-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Każdy wynik osobno, cienka linia */
+.result-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  font-size: 1.05rem !important;
+  padding: .35rem 0 !important;
+  border-bottom: 1px solid #e6eaf1 !important;
+  margin-bottom: .1rem !important;
+  font-weight: 500 !important;
+}
+.result-item:last-child {
+  border-bottom: none !important;
+}
+
+/* Nazwy pól: delikatny granat */
+.result-label {
+  font-family: var(--font-primary) !important;
+  font-size: .99rem !important;
+  color: #64748b !important;
+  font-weight: 500 !important;
+  letter-spacing: .04em !important;
+  text-transform: none !important;
+}
+
+/* Wartości – duży, techniczny font */
+.result-value, .summary-value, .card-power, .card-price {
+  font-family: var(--font-technical) !important;
+  font-size: 1.42rem !important;
+  font-weight: 700 !important;
+  color: #2d3657 !important;
+  letter-spacing: -.01em !important;
+  background: none !important;
+  text-shadow: none !important;
+  padding-left: .8rem !important;
+}
+
+/* Badge inżynierski – micro, minimalistyczny */
+.engineering-badge {
+  display: inline-block;
+  font-family: var(--font-technical);
+  font-size: .79rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(95deg,#2d3657 50%,#bfc6d1 100%);
+  border-radius: 9999px;
+  padding: 2.5px 17px;
+  margin-bottom: 1.5rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 0 1px 5px rgba(30,41,59,0.07);
+}
+
+/* Subtelne wejście – płynny fade-in z lekkością */
+.haier-slider-wrapper {
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  max-width: 860px;
+}
+
+.haier-slider {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heat-pump-card.haier-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.heat-pump-card.haier-style:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 220px;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Ikony Haier – usunięte całkowicie */
+.icon-line {
+  display: none !important;
+}
+
+.product-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #222;
+  padding: 16px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .haier-slider {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .heat-pump-card.haier-style {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .image-wrapper {
+    height: 180px;
+  }
+
+  .product-title {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
+```
+
+The transform property in input:focus and input:hover has been removed.
+
+.disabled-feature {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  position: relative !important;
+}
+
+/* Tooltip „Wkrótce” */
+.disabled-feature:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary-deep);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}

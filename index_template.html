@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Pomp Ciepła - TOP-INSTAL</title>
+    <meta name="description" content="Profesjonalny kalkulator doboru pomp ciepła z analizą AI projektów budowlanych">
+    
+    <!-- Modern CSS -->
+    <link rel="stylesheet" href="/static/assets/css/components.css">
+    
+    <!-- Legacy CSS Support -->
+    <link rel="stylesheet" href="/kalkulator_style.css">
+    <link rel="stylesheet" href="/premium-visual-enhancements.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Application will be mounted here -->
+    <div id="app">
+        <div class="loading-screen">
+            <div class="spinner"></div>
+            <p>Ładowanie kalkulatora...</p>
+        </div>
+    </div>
+
+    <!-- Error Container -->
+    <div id="calculator-error" class="alert alert-error hidden"></div>
+    <div id="pdf-error" class="alert alert-error hidden"></div>
+
+    <!-- Include original content for backward compatibility -->
+    <!-- This will be moved to proper template structure in next phase -->
+    
+    <!-- Modern JS Modules -->
+    <script type="module" src="/static/assets/js/app.js"></script>
+    
+    <!-- Legacy JS Support -->
+    <script src="/calculatorInit.js"></script>
+    <script src="/formDataProcessor.js"></script>
+    <script src="/intelligentModeHandler.js"></script>
+    <script src="/pdfUploadHandler.js"></script>
+    <script src="/resultsRenderer.js"></script>
+    <script src="/welcomeScreen.js"></script>
+    
+    <style>
+        .loading-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 1rem;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</body>
+</html>

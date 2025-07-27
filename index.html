@@ -1,0 +1,2679 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Mocy Pompy Ciepła - TOP-INSTAL</title>
+
+    <!-- External CSS with cache busting - WYCENA 2025 structure -->
+    <link rel="stylesheet" href="frontend/css/kalkulator_style.css?v=202507241">
+    <link rel="stylesheet" href="frontend/css/premium-visual-enhancements.css?v=202507241">
+    <link rel="stylesheet" href="frontend/css/ai-coach-dock.css?v=202507241">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Force browser refresh -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+    <div id="top-instal-calc" class="wrapper">
+
+        <!-- Hetzner-style Top Bar -->
+        <div class="hetzner-top-bar"></div>
+
+        <!-- Hetzner-style Header with Tech Background -->
+        <div class="hetzner-header">
+            <div class="hetzner-header__overlay"></div>
+            <div class="hetzner-header__content">
+                <div class="hetzner-logo">TOP-INSTAL</div>
+                <h1 class="hetzner-title">Inteligentny Kalkulator Mocy<br>Pompy Ciepła z AI</h1>
+                <p class="hetzner-subtitle">
+                    Profesjonalne narzędzie z algorytmem AI, analizą PDF projektów budowlanych i automatycznym doborem optymalnych pomp ciepła Panasonic zgodnie z normami PN-B 02025 i PN-EN 832
+                </p>
+                <div class="hetzner-nav">
+                    <span class="hetzner-nav-item">Kalkulator Mocy</span>
+                    <span class="hetzner-nav-item">Konfigurator</span>
+                    <span class="hetzner-nav-item">Wycena Online</span>
+                    <span class="hetzner-nav-item">Pompa Ciepła</span>
+                    <span class="hetzner-nav-item">Panasonic</span>
+                    <span class="hetzner-nav-item">AI Llama</span>
+                    <span class="hetzner-nav-item">Groq LLM</span>
+                    <span class="hetzner-nav-item">PDF Analiza</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔰 HETZNER-STYLE WELCOME SCREEN -->
+        <section id="welcome-screen" class="section active">
+            <!-- Main Hero Section -->
+            <div class="main-hero">
+                <div class="hero-content">
+                    <h2 class="hero-headline">Wybierz Metodę Obliczenia</h2>
+                    <p class="hero-subtitle">Dostępne 4 tryby kalkulacji dostosowane do różnych scenariuszy projektowych</p>
+
+                    <!-- Mode Selection Cards -->
+                    <div class="mode-cards-grid">
+                        <div class="mode-card" data-mode="mode1" onclick="showModeForm('mode1')" tabindex="0" aria-label="Pełny kalkulator">
+                            <div class="mode-card-header">
+                                <h3 class="mode-card-title">Pełny Kalkulator</h3>
+                                <div class="mode-card-meta">~3 min</div>
+                            </div>
+                            <p class="mode-card-desc">Szczegółowe obliczenie w 6 krokach dla nowych budynków</p>
+                            <div class="mode-card-features">
+                                <div class="mode-card-feature">6-krokowy kreator</div>
+                                <div class="mode-card-feature">Obliczenia termiczne</div>
+                                <div class="mode-card-feature">Dobór pompy ciepła</div>
+                            </div>
+                        </div>
+
+                        <div class="mode-card" data-mode="mode2" onclick="showModeForm('mode2')" tabindex="0" aria-label="Analiza projektu">
+                            <div class="mode-card-header">
+                                <h3 class="mode-card-title">Analiza Projektu</h3>
+                                <div class="mode-card-meta">AI + PDF</div>
+                            </div>
+                            <p class="mode-card-desc">AI analizuje PDF projektu i automatycznie oblicza parametry</p>
+                            <div class="mode-card-features">
+                                <div class="mode-card-feature">Upload PDF projektu</div>
+                                <div class="mode-card-feature">Analiza AI (Groq)</div>
+                                <div class="mode-card-feature">Automatyczne obliczenia</div>
+                            </div>
+                        </div>
+
+                        <div class="mode-card" data-mode="mode3" onclick="showModeForm('mode3')" tabindex="0" aria-label="Modernizacja">
+                            <div class="mode-card-header">
+                                <h3 class="mode-card-title">Modernizacja</h3>
+                                <div class="mode-card-meta">Audyt OZC</div>
+                            </div>
+                            <p class="mode-card-desc">Obliczenie na podstawie audytu energetycznego OZC</p>
+                            <div class="mode-card-features">
+                                <div class="mode-card-feature">Dane z audytu OZC</div>
+                                <div class="mode-card-feature">Obliczenia mocy</div>
+                                <div class="mode-card-feature">Istniejące budynki</div>
+                            </div>
+                        </div>
+
+                        <div class="mode-card" data-mode="mode4" onclick="showModeForm('mode4')" tabindex="0" aria-label="Znana moc">
+                            <div class="mode-card-header">
+                                <h3 class="mode-card-title">Znana Moc</h3>
+                                <div class="mode-card-meta">Szybko</div>
+                            </div>
+                            <p class="mode-card-desc">Podajesz konkretną moc i przechodzisz do konfiguracji</p>
+                            <div class="mode-card-features">
+                                <div class="mode-card-feature">Bezpośrednie wprowadzenie</div>
+                                <div class="mode-card-feature">Pomiń obliczenia</div>
+                                <div class="mode-card-feature">Tylko konfiguracja</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode Forms (Hidden initially) -->
+            <div id="mode-forms" class="mode-forms-container hidden">
+                <!-- Mode 1 Form -->
+                <div id="form-mode1" class="mode-form hidden">
+                    <div class="form-glass-container">
+                        <h3>Pełny Kalkulator - Podstawowe Dane</h3>
+                        <div class="form-fields">
+                            <div class="form-field">
+                                <label for="user-name-1">Imię (opcjonalne)</label>
+                                <input type="text" id="user-name-1" placeholder="Np. Jan">
+                            </div>
+                            <div class="form-field">
+                                <label for="postal-code-1">Kod pocztowy budynku - określenie strefy projektowej [*C]</label>
+                                <input type="text" id="postal-code-1" placeholder="00-000" pattern="[0-9]{2}-[0-9]{3}" maxlength="6" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Typ budynku</label>
+                                <div class="radio-group building-type-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-1" value="single" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dom jednorodzinny</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-1" value="semi" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-building"></i>
+                                            <span>Bliźniak</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-1" value="row" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-city"></i>
+                                            <span>Szeregowiec</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Chce pompę ciepła do:</label>
+                                <div class="radio-group heat-pump-purpose-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-1" value="heating" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-thermometer-half"></i>
+                                            <span>Ogrzewanie C.O.</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-1" value="heating_water" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-fire"></i>
+                                            <span>Ogrzewanie C.O. i C.W.U.</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-continue" onclick="proceedToCalculator('mode1')" disabled>
+                            <span>Przejdź do kalkulatora</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 2 Form -->
+                <div id="form-mode2" class="mode-form hidden">
+                    <div class="form-glass-container">
+                        <h3>Analiza Projektu - Upload PDF</h3>
+                        <div class="form-fields">
+
+                            <div class="form-field">
+                                <label for="postal-code-2">Kod pocztowy budynku - określenie strefy projektowej [*C]</label>
+                                <input type="text" id="postal-code-2" placeholder="00-000" pattern="[0-9]{2}-[0-9]{3}" maxlength="6" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Typ budynku</label>
+                                <div class="radio-group building-type-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-2" value="single" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dom jednorodzinny</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-2" value="semi" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-building"></i>
+                                            <span>Bliźniak</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-2" value="row" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-city"></i>
+                                            <span>Szeregowiec</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Chce pompę ciepła do:</label>
+                                <div class="radio-group heat-pump-purpose-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-2" value="heating" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-thermometer-half"></i>
+                                            <span>Ogrzewanie C.O.</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-2" value="heating_water" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-fire"></i>
+                                            <span>Ogrzewanie C.O. i C.W.U.</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field file-upload-field">
+                                <label for="pdf-upload-mode2">Projekt budynku (PDF)</label>
+                                <div class="file-upload-zone" id="pdf-upload-zone-mode2" onclick="document.getElementById('pdf-upload-mode2').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span id="pdf-upload-text-mode2">Kliknij lub przeciągnij PDF</span>
+                                </div>
+                                <input type="file" id="pdf-upload-mode2" accept=".pdf" hidden>
+                                <div id="pdf-analysis-status-mode2" class="upload-status hidden">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <p class="status-text">Analizowanie projektu z AI...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-continue" onclick="proceedToCalculator('mode2')" disabled>
+                            <span>Przejdź do kalkulatora AI</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 3 Form -->
+                <div id="form-mode3" class="mode-form hidden">
+                    <div class="form-glass-container">
+                        <h3>Modernizacja - Dane z Audytu</h3>
+                        <div class="form-fields">
+
+                            <div class="form-field">
+                                <label for="postal-code-3">Kod pocztowy budynku - określenie strefy projektowej [*C]</label>
+                                <input type="text" id="postal-code-3" placeholder="00-000" pattern="[0-9]{2}-[0-9]{3}" maxlength="6" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Typ budynku</label>
+                                <div class="radio-group building-type-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-3" value="single" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dom jednorodzinny</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-3" value="semi" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-building"></i>
+                                            <span>Bliźniak</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-3" value="row" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-city"></i>
+                                            <span>Szeregowiec</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Chce pompę ciepła do:</label>
+                                <div class="radio-group heat-pump-purpose-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-3" value="heating" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-thermometer-half"></i>
+                                            <span>Ogrzewanie C.O.</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-3" value="heating_water" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-fire"></i>
+                                            <span>Ogrzewanie C.O. i C.W.U.</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <button type="button" class="btn-continue" onclick="proceedToCalculator('mode3')" disabled>
+                            <span>Przejdź do kalkulatora audytu</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 4 Form -->
+                <div id="form-mode4" class="mode-form hidden">
+                    <div class="form-glass-container">
+                        <h3>Znana Moc - Bezpośrednia Konfiguracja</h3>
+                        <div class="form-fields">
+
+                            <div class="form-field">
+                                <label for="postal-code-4">Kod pocztowy budynku - określenie strefy projektowej [*C]</label>
+                                <input type="text" id="postal-code-4" placeholder="00-000" pattern="[0-9]{2}-[0-9]{3}" maxlength="6" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Typ budynku</label>
+                                <div class="radio-group building-type-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-4" value="single" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dom jednorodzinny</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-4" value="semi" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-building"></i>
+                                            <span>Bliźniak</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="building-type-4" value="row" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-city"></i>
+                                            <span>Szeregowiec</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Chce pompę ciepła do:</label>
+                                <div class="radio-group heat-pump-purpose-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-4" value="heating" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-thermometer-half"></i>
+                                            <span>Ogrzewanie C.O.</span>
+                                        </div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="heat-pump-purpose-4" value="heating_water" required>
+                                        <span class="radio-custom"></span>
+                                        <div class="radio-label">
+                                            <i class="fas fa-fire"></i>
+                                            <span>Ogrzewanie C.O. i C.W.U.</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="known-power">Moc pompy ciepła (kW)</label>
+                                <input type="number" id="known-power" placeholder="8.5" step="0.1" min="1" max="50" required>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-continue" onclick="proceedToCalculator('mode4')" disabled>
+                            <span>Przejdź do kalkulatora mocy</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🧩 TRYB 1: Pełny formularz kalkulatora -->
+        <form id="heatCalcFormFull" class="hidden section" novalidate>
+            <div class="section" data-tab="0">
+                <!-- Pasek postępu -->
+                <div class="progress-bar-premium" data-step="1">
+                    <div class="step active"><span>1</span></div>
+                    <div class="step"><span>2</span></div>
+                    <div class="step"><span>3</span></div>
+                    <div class="step"><span>4</span></div>
+                    <div class="step"><span>5</span></div>
+                    <div class="step"><span>6</span></div>
+                </div>
+
+                <!-- Instrukcja + Dane -->
+                <div class="formularz-z-mapa">
+                    <div class="formularz">
+                        <div class="bordered-text">
+                            <h3>INSTRUKCJA</h3>
+                            <label>
+                                - W mniej niż 2 minuty poznasz potrzebną moc pompy, zapotrzebowanie budynku na ciepło i otrzymasz raport.<br>
+                                - Podaj dane o Twoim budynku – krok po kroku.<br>
+                                - Nie spiesz się - dokładne dane to precyzyjny wynik.<br>
+                                - Na końcu otrzymujesz pełne podsumowanie i możliwość skonfigurowania własnego zestawu z natychmiastową wyceną.<br>
+                                - Korzystasz swobodnie - nie podajesz swoich danych.
+                            </label>
+                        </div>
+
+                        <h3>INFORMACJE O BUDYNKU</h3>
+                        <hr class="separator">
+
+                        <!-- Typ budynku -->
+                        <label class="form-label">Podaj rodzaj budynku: <span class="required">*</span></label>
+                        <select name="building_type" required class="form-select">
+                            <option value="">-- Wybierz rodzaj budynku --</option>
+                            <option value="single_house" selected>Budynek jednorodzinny (wolnostojący)</option>
+                            <option value="double_house" disabled>Bliźniak</option>
+                            <option value="row_house" disabled>Szeregowiec</option>
+                        </select>
+
+                        <hr class="separator">
+                        <hr class="separator">
+
+                        <!-- Rok budowy -->
+                        <label class="form-label">Podaj rok budowy: <span class="required">*</span></label>
+                        <select name="construction_year" required class="form-select">
+                            <option value="">-- Wybierz rok budowy --</option>
+                            <option value="2025">2025</option>
+                            <option value="2021" selected>2021–2024</option>
+                            <option value="2011">2011–2020</option>
+                            <option value="2000">2000–2010</option>
+                            <option value="1990">1991–2000 (lata 90.)</option>
+                            <option value="1980">1981–1990 (lata 80.)</option>
+                            <option value="1970">1971–1980 (lata 70.)</option>
+                            <option value="1960">1961–1970 (lata 60.)</option>
+                            <option value="1950">1950–1960 (lata 50.)</option>
+                            <option value="1940">1940–1949 (lata 40.)</option>
+                            <option value="1939">przed 1939 (przed II wojną)</option>
+                            <option value="1914">przed 1914 (przed I wojną)</option>
+                        </select>
+
+                        <hr class="separator">
+                        <hr class="separator">
+
+                        <!-- Strefa klimatyczna -->
+                        <label class="form-label">Wybierz strefę, w której znajduje się Twój budynek <span class="required">*</span></label>
+                        <div class="form-field__select-wrapper">
+                            <select name="location_id" required class="form-select">
+                                <option value="">-- Wybierz strefę --</option>
+                                <option value="PL_DOLNOSLASKIE_WROCLAW" selected>Strefa III</option>
+                                <option value="PL_STREFA_IV">Strefa IV</option>
+                                <option value="PL_ZAKOPANE">Strefa V</option>
+                                <option value="PL_KUJAWSKOPOMORSKIE_BYDGOSZCZ">Strefa II</option>
+                                <option value="PL_GDANSK">Strefa I</option>
+                            </select>
+                            <span class="tooltip-icon-wrapper" tabindex="0">
+                                <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                                <span class="tooltip-text">Sprawdź położenie budynku na mapie – strefa określa temperaturę projektową</span>
+                            </span>
+                        </div>
+
+                        <hr class="separator">
+
+                        <div class="form-column">
+                            <div class="climate-map">
+                                <h4><i class="fas fa-map-marked-alt"></i> Mapa stref klimatycznych</h4>
+                                <img src="https://topinstal.com.pl/pictures/mapka.png" alt="Mapa stref klimatycznych w Polsce" class="zone-map">
+                                <div class="zone-legend">
+                                    <div class="legend-item">
+                                        <span class="zone-color zone-1"></span>
+                                        <span>Strefa I: -16°C</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="zone-color zone-2"></span>
+                                        <span>Strefa II: -18°C</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="zone-color zone-3"></span>
+                                        <span>Strefa III: -20°C</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="zone-color zone-4"></span>
+                                        <span>Strefa IV: -22°C</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="zone-color zone-5"></span>
+                                        <span>Strefa V: -24°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Przycisk Dalej -->     
+                <div class="text-center">
+                    <button class="btn-next1" type="button">Dalej</button>
+                </div>
+
+            </div>
+
+            <!-- Zakładka 1: Kształt -->
+            <div class="section" data-tab="1">
+                <div class="progress-bar-premium" data-step="2">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step active"><span>2</span></div>
+                    <div class="step"><span>3</span></div>
+                    <div class="step"><span>4</span></div>
+                    <div class="step"><span>5</span></div>
+                    <div class="step"><span>6</span></div>
+                </div>
+                <h3>KSZTAŁT I BRYŁA BUDYNKU</h3>
+                <hr class="separator">
+
+                <div class="building-shape-wrapper">
+                    <label>Obrys budynku</label>
+                    <select id="buildingShape" name="building_shape" required class="form-select">
+                        <option value="regular" selected>Regularny (prostokątny)</option>
+                        <option value="irregular">Nieregularny (z wykuszami, wnękami itp.)</option>
+                    </select>
+                    <img src="https://topinstal.com.pl/pictures/obrys.png" class="obrys-img" alt="Rodzaje obrysu budynku" />
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+                <div id="regularFields">
+                    <label>Podaj wymiary albo powierzchnię zabudowy</label>
+                    <div class="form-field__select-wrapper">
+                        <select id="regularMethod" name="regular_method" class="form-select">
+                            <option value="dimensions" selected>Wymiary zewnętrzne (dł. × szer.)</option>
+                            <option value="area">Powierzchnia zabudowy (m²)</option>
+                        </select>
+                        <span class="tooltip-icon-wrapper" tabindex="0">
+                            <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                            <span class="tooltip-text">Podajesz kluczowy parametr. Powierzchnia zabudowy to powierzchnia zajmowana przez budynek - określamy ją poprzez zewnętrzne krawędzie ścian i ich rzut na powierzchnię gruntu</span>
+                        </span>
+                    </div>
+                    <div id="dimensionsFields">
+                        <label>Długość (m)<input name="building_length" step="0.2" type="number" value="9"/></label>
+                        <label>Szerokość (m)<input name="building_width" step="0.2" type="number" value="9"/></label>
+                    </div>
+                    <div id="areaField">
+                        <label>Powierzchnia zabudowy(m²)<input name="floor_area" step="0.5" type="number"/><img src="https://topinstal.com.pl/pictures/zabudowa.png" class="obrys-img" alt="Zabudowa" /></label>
+                    </div>
+                </div>
+
+                <div id="irregularFields">
+                    <label>Powierzchnia zabudowy (m²)<input name="floor_area_irregular" step="0.1" type="number"/><img height= "50px" src="https://topinstal.com.pl/pictures/zabudowa.png" alt="Zabudowa" /></label>
+                    <label>Obwód (m)<input name="floor_perimeter" step="0.1" type="number"/></label>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Czy są balkony?</label>
+                <div class="form-field__checkbox-inline">
+                    <input id="hasBalcony" name="has_balcony" type="checkbox" value="true" />
+                    <label for="hasBalcony">TAK</label>
+                    <span class="tooltip-icon-wrapper" tabindex="0">
+                        <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                        <span class="tooltip-text">Dotyczy balkonów nadwieszonych poza bryłę budynku. Takie połączenie konstrukcyjne stanowi mostek cieplny i ułatwia migrację ciepła na zewnątrz</span>
+                    </span>
+                </div>
+
+                <div id="balconyFields">
+                    <label>Ilość balkonów</label>
+                    <input name="number_balcony_doors" type="number"/>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Czy jest piwnica / podpiwniczenie?</label>
+                <label><input name="has_basement" type="checkbox" value="true"/>TAK</label>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>PODAJ LICZBĘ PIĘTER <b>bez poddasza</b></label>
+                <select name="building_floors" required="">
+                    <option value="1" selected>Parter</option>
+                    <option value="2">Parter + 1 piętro</option>
+                    <option value="3">Parter + 2 piętra</option>
+                    <option value="4">Parter + 3 piętra</option>
+                </select>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label for="building_roof">Jaki jest dach?</label>
+                <div class="form-field__select-wrapper">
+                    <select name="building_roof" id="building_roof" required class="form-select">
+                        <option value="flat">Dach płaski</option>
+                        <option value="steep">Skośny - z przestrzenią poddasza</option>
+                        <option value="oblique">Skośny bez przestrzeni poddasza</option>
+                    </select>
+                    <span class="tooltip-icon-wrapper" tabindex="0">
+                        <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                        ```html
+                        <span class="tooltip-text">Poddasze to przestrzeń pod dachem o wielkości jak prawie cała kondygnacja. Poddasze może być użytkowe lub niezamieszkałe i ma rozmiary niepełnej kondygnacji. Nie zaznaczaj poddasza, jeśli masz strych niewielkich rozmiarów.</span>
+                    </span>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <div id="heatedFloorsSection">
+                    <label><strong>ZAZNACZ OGRZEWANE PIĘTRA:</strong></label>
+                    <div id="heatedFloorsContainer">
+                        <label><input type="checkbox" name="building_heated_floors[]" value="0"/> PIWNICA</label>
+                        <label><input type="checkbox" name="building_heated_floors[]" value="1" checked/>PARTER</label>
+                        <label><input type="checkbox" name="building_heated_floors[]" value="2"/> 1. PIĘTRO</label>
+                        <label><input type="checkbox" name="building_heated_floors[]" value="3"/> 2. PIĘTRO</label>
+                        <label><input type="checkbox" name="building_heated_floors[]" value="4"/> 3. PIĘTRO</label>
+                    </div>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Wysokość kondygnacji:</label>
+                <select name="floor_height" required="">
+                    <option value="2.6">Standard: około 2,70 m</option>
+                    <option value="2.3">Nisko: poniżej 2,40 m</option>
+                    <option value="3.1">Wysoko: 3 m lub więcej</option>
+                    <option value="4.1">Bardzo wysoko: 4 m lub więcej</option>
+                </select>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Czy w bryle budynku znajduje się garaż?</label>
+                <select name="garage_type" required="">
+                    <option value="none">Brak garażu w bryle budynku</option>
+                    <option value="single_unheated">1-stanowisko, nieogrzewany</option>
+                    <option value="single_heated">1-stanowisko, ogrzewany</option>
+                    <option value="double_unheated">2-stanowiskowy, nieogrzewany</option>
+                    <option value="double_heated">2-stanowiskowy, ogrzewany</option>
+                </select>
+
+                <div id="garageFields" class="hidden">
+                    <label>Szczegóły garażu</label>
+                    <small class="opis">Garaż w bryle budynku wpływa na obliczenia cieplne</small>
+                </div>
+
+                <hr class="separator">
+                    <div class="btn-row">
+                      <button class="btn-prev" type="button">Cofnij</button>
+                      <button class="btn-next2" type="button">Dalej</button>
+                </div>
+            </div>
+
+            <!-- Zakładka 2: Konstrukcja -->
+            <div class="section" data-tab="2">
+                <div class="progress-bar-premium" data-step="3">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step completed"><span>2</span></div>
+                    <div class="step active"><span>3</span></div>
+                    <div class="step"><span>4</span></div>
+                    <div class="step"><span>5</span></div>
+                    <div class="step"><span>6</span></div>
+                </div>
+                <h3>ŚCIANY ZEWNĘTRZNE</h3>
+                <hr class="separator">
+
+                <label>Konstrukcja budynku:</label>
+                <select id="constructionType" name="construction_type">
+                    <option value="traditional">Tradycyjna (murowana lub drewniana)</option>
+                    <option value="canadian" disabled>Szkieletowa (dom kanadyjski)</option>
+                </select>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Grubość ściany zewnętrznej (z ewentualnym ociepleniem)</label>
+                <input min="0" name="wall_size" required="" step="1" type="number" value="50"/>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <div id="traditionalOptions">
+                    <label>Podaj podstawowy materiał, z jakiego zbudowane są ściany</label>
+                    <small class="opis">Jeśli nie jesteś pewien, wybierz najbardziej zbliżony</small>
+                    <select name="primary_wall_material" id="primary_wall_material_select">
+                        <option value="84">Porotherm</option>
+                        <option value="55">Drewno liściaste</option>
+                        <option value="56">Drewno iglaste</option>
+                        <option value="54">Beton komórkowy</option>
+                        <option value="51">Beton</option>
+                        <option value="52">Żelbet</option>
+                        <option value="53">Pustak żużlobetonowy</option>
+                        <option value="57">Cegła pełna</option>
+                        <option value="58">Cegła dziurawka</option>
+                        <option value="59">Cegła kratówka</option>
+                        <option value="60">Cegła silikatowa pełna</option>
+                        <option value="61">Cegła silikatowa dziurawka</option>
+                        <option value="62">Cegła klinkierowa</option>
+                        <option value="63">Pustaki ceramiczne</option>
+                        <option value="76">Kamień polny</option>
+                        <option value="77">Granit</option>
+                        <option value="78">Marmur</option>
+                        <option value="79">Piaskowiec</option>
+                        <option value="80">Wapień</option>
+                        <option value="83">Wiórobeton</option>
+                        <option value="85">Pustak keramzytowy</option>
+                        <option value="89">Ytong</option>
+                        <option value="90">Termalica 300/400</option>
+                        <option value="91">Termalica 600/650</option>
+                        <option value="92">Thermomur</option>
+                        <option value="93">Glina</option>
+                        <option value="95">PIR</option>
+                        <option value="96">Bloczek silikatowy</option>
+                        <option value="97">Keramzytobeton</option>
+                        <option value="99">Ytong Ultra+</option>
+                        <option value="100">Ytong PP5</option>
+                    </select>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Czy ściany są zbudowane z jakiegoś dodatkowego materiału?</label>
+                <label><input id="hasSecondaryWallMaterial" name="has_secondary_wall_material" type="checkbox" value="true"/>TAK</label>
+
+                <div class="hidden" id="secondaryWallFields">
+                    <label>Dodatkowy materiał ścian zewnętrznych:</label>
+                    <select name="secondary_wall_material" id="secondary_wall_material_select">
+                        <option value="84">Porotherm</option>
+                        <option value="55">Drewno liściaste</option>
+                        <option value="56">Drewno iglaste</option>
+                        <option value="54">Beton komórkowy</option>
+                        <option value="51">Beton</option>
+                        <option value="52">Żelbet</option>
+                        <option value="53">Pustak żużlobetonowy</option>
+                        <option value="57">Cegła pełna</option>
+                        <option value="58">Cegła dziurawka</option>
+                        <option value="59">Cegła kratówka</option>
+                        <option value="60">Cegła silikatowa pełna</option>
+                        <option value="61">Cegła silikatowa dziurawka</option>
+                        <option value="62">Cegła klinkierowa</option>
+                        <option value="63">Pustaki ceramiczne</option>
+                        <option value="76">Kamień polny</option>
+                        <option value="77">Granit</option>
+                        <option value="78">Marmur</option>
+                        <option value="79">Piaskowiec</option>
+                        <option value="80">Wapień</option>
+                        <option value="83">Wiórobeton</option>
+                        <option<85">Pustak keramzytowy</option>
+                        <option value="89">Ytong</option>
+                        <option value="90">Termalica 300/400</option>
+                        <option value="91">Termalica 600/650</option>
+                        <option value="92">Thermomur</option>
+                        <option value="93">Glina</option>
+                        <option value="95">PIR</option>
+                        <option value="96">Bloczek silikatowy</option>
+                        <option value="97">Keramzytobeton</option>
+                        <option value="99">Ytong Ultra+</option>
+                        <option value="100">Ytong PP5</option>
+                    </select>
+                </div>
+
+                <div class="hidden" id="canadianOptions">
+                    <label><input id="hasInternalIsolation" name="has_internal_isolation" type="checkbox" value="true"/> Ściana ma izolację wewnętrzną</label>
+                    <div class="hidden" id="internalIsolationFields">
+                        <label>Rodzaj izolacji wewnętrznej</label>
+                        <select name="internal_wall_isolation[material]" id="internal_wall_isolation[material]">
+                            <option value="64">Korek</option>
+                            <option value="65">Słoma</option>
+                            <option value="66">Trzcina</option>
+                            <option value="68">Wełna mineralna</option>
+                            <option value="69">Wełna mineralna granulowana</option>
+                            <option value="70">Styropian</option>
+                            <option value="71">Styropian twardy (XPS)</option>
+                            <option value="81">Padzierz lniany</option>
+                            <option value="82">Pustka powietrzna</option>
+                            <option value="83">Wiórobeton</option>
+                            <option value="86">PUR</option>
+                            <option value="87">Ekofiber</option>
+                            <option value="88">Styropian grafitowy</option>
+                            <option value="94">Wełna drzewna</option>
+                            <option value="95">PIR</option>
+                            <option value="98">Celuloza</option>
+                            <option value="101">Multipor</option>
+                        </select>
+                        <label>Grubość izolacji (cm)<input min="0" name="internal_wall_isolation[size]" step="1" type="number"/></label>
+                    </div>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Czy ściany budynku są docieplone?</label>
+                <label><input id="hasExternalIsolation" name="has_external_isolation" type="checkbox" value="true" checked/>TAK</label>
+                <div class="hidden" id="externalIsolationFields">
+                    <label>Rodzaj ocieplenia ścian</label>
+                    <select name="external_wall_isolation[material]" id="external_wall_isolation[material]">
+                        <option value="88">Styropian grafitowy</option>
+                        <option value="70">Styropian</option>
+                        <option value="71">Styropian twardy (XPS)</option>
+                        <option value="64">Korek</option>
+                        <option value="65">Słoma</option>
+                        <option value="66">Trzcina</option>
+                        <option value="68">Wełna mineralna</option>
+                        <option value="81">Padzierz lniany</option>
+                        <option value="86">PUR</option>
+                        <option value="87">Ekofiber</option>
+                        <option value="94">Wełna drzewna</option>
+                        <option value="95">PIR</option>
+                        <option value="98">Celuloza</option>
+                        <option value="101">Multipor</option>
+                    </select>
+                    <label>Grubość ocieplenia (cm)<input min="0" name="external_wall_isolation[size]" step="1" type="number" value="15"/></label>
+                </div>
+
+                <hr class="separator">
+
+                    <div class="btn-row">
+                      <button class="btn-prev" type="button">Cofnij</button>
+                      <button class="btn-next3" type="button">Dalej</button>
+                </div>
+            </div>
+
+            <!-- Zakładka 3: Okna i drzwi -->
+            <div class="section" data-tab="3">
+                <div class="progress-bar-premium" data-step="4">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step completed"><span>2</span></div>
+                    <div class="step completed"><span>3</span></div>
+                    <div class="step active"><span>4</span></div>
+                    <div class="step"><span>5</span></div>
+                    <div class="step"><span>6</span></div>
+                </div>
+                <h3>OKNA I DRZWI</h3>
+                <hr class="separator">
+
+                <label>Wybierz rodzaj okien:</label>
+                <select name="windows_type" required="">
+                    <option value="2021_triple_glass">Nowoczesne (2021+), trzyszybowe</option>
+                    <option value="2021_double_glass">Nowoczesne (2021+), dwuszybowe</option>
+                    <option value="new_triple_glass">Współczesne, 3-szybowe</option>
+                    <option value="new_double_glass">Współczesne, 2-szybowe</option>
+                    <option value="semi_new_double_glass">Starsze zespolone (typowe z lat 90.)</option>
+                    <option value="old_double_glass">Stare okna z 2 szybami</option>
+                    <option value="old_single_glass">Stare okna z 1 szybą</option>
+                </select>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label class="label-with-tooltip">
+                    Podaj liczbę okien:
+                    <span class="tooltip-icon-wrapper" tabindex="0">
+                        <span class="tooltip-icon"></span>
+                        <span class="tooltip-text">Mniejsze okna należy liczyć jako pół, okna dachowe jako 1, a małe dachowe jako pół</span>
+                    </span>
+                </label>
+                <input min="1" name="number_windows" type="number" value="9" required/>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Liczba dużych przeszkleń</label>
+                <small class="opis">(np. okna HS, tarasowe, witrynowe)</small>
+                <input min="0" name="number_huge_windows" type="number" value="0"/>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Rodzaj drzwi zewnętrznych</label>
+                <select name="doors_type" required>
+                    <option value="new_pvc">Nowe PVC</option>
+                    <option value="new_wooden">Nowe drewniane</option>
+                    <option value="new_metal">Nowe metalowe</option>
+                    <option value="old_wooden">Stare drewniane</option>
+                    <option value="old_metal">Stare metalowe</option>
+                </select>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Liczba drzwi zewnętrznych:</label>
+                <input min="1" name="number_doors" type="number" value="1" required/>
+
+                <hr class="separator">
+
+                    <div class="btn-row">
+                      <button class="btn-prev" type="button">Cofnij</button>
+                      <button class="btn-next4" type="button">Dalej</button>
+                </div>
+            </div>
+
+            <!-- Zakładka 4: Izolacje -->
+            <div class="section" data-tab="4">
+                <div class="progress-bar-premium" data-step="5">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step completed"><span>2</span></div>
+                    <div class="step completed"><span>3</span></div>
+                    <div class="step completed"><span>4</span></div>
+                    <div class="step active"><span>5</span></div>
+                    <div class="step"><span>6</span></div>
+                </div>
+                <h3>IZOLACJE</h3>
+                <hr class="separator">
+
+                <label>Izolacja dachu</label>
+                <select id="hasTopIsolation" name="top_isolation">
+                    <option value="yes">Tak</option>
+                    <option value="no">Nie</option>
+                </select>
+
+                <div id="topIsolationFields">
+                    <label>Materiał izolacyjny dachu</label>
+                    <select name="top_isolation[material]" id="top_isolation[material]">
+                        <option value="68">Wełna mineralna</option>
+                        <option value="70">Styropian</option>
+                        <option value="71">Styropian twardy (XPS)</option>
+                        <option value="88">Styropian grafitowy</option>
+                        <option value="86">Piana PUR</option>
+                        <option value="64">Korek</option>
+                        <option value="65">Słoma</option>
+                        <option value="66">Trzcina</option>
+                        <option value="81">Padzierz lniany</option>
+                        <option value="87">Ekofiber</option>
+                        <option value="94">Wełna drzewna</option>
+                        <option value="95">PIR</option>
+                        <option value="98">Celuloza</option>
+                        <option value="101">Multipor</option>
+                    </select>
+                    <label>Grubość izolacji dachu (cm)<input min="0" name="top_isolation[size]" step="1" type="number" value="20"/></label>
+                </div>
+
+                <hr class="separator">
+                <hr class="separator">
+
+                <label>Izolacja podłogi</label>
+                <select id="hasBottomIsolation" name="bottom_isolation">
+                    <option value="yes">Tak</option>
+                    <option value="no">Nie</option>
+                </select>
+
+                <div id="bottomIsolationFields">
+                    <label>Materiał izolacyjny podłogi</label>
+                    <select name="bottom_isolation[material]" id="bottom_isolation[material]">
+                        <option value="68">Wełna mineralna</option>
+                        <option value="70">Styropian</option>
+                        <option value="71">Styropian twardy (XPS)</option>
+                        <option value="88">Styropian grafitowy</option>
+                        <option value="86">Piana PUR</option>
+                        <option value="64">Korek</option>
+                        <option value="65">Słoma</option>
+                        <option value="66">Trzcina</option>
+                        <option value="81">Padzierz lniany</option>
+                        <option value="87">Ekofiber</option>
+                        <option value="94">Wełna drzewna</option>
+                        <option value="95">PIR</option>
+                        <option value="98">Celuloza</option>
+                        <option value="101">Multipor</option>
+                    </select>
+                    <label>Grubość izolacji podłogi (cm)<input min="0" name="bottom_isolation[size]" id="bottom_isolation[Size]" step="1" type="number" value="10"/></label>
+                </div>
+
+                <hr class="separator">
+
+                <div class="btn-row">
+                  <button class="btn-prev" type="button">Cofnij</button>
+                  <button class="btn-next5" type="button">Dalej</button>
+
+                </div>
+            </div>
+
+            <!-- Zakładka 5: Ogrzewanie i CWU -->
+            <div class="section" data-tab="5">
+                <div class="progress-bar-premium" data-step="6">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step completed"><span>2</span></div>
+                    <div class="step completed"><span>3</span></div>
+                    <div class="step completed"><span>4</span></div>
+                    <div class="step completed"><span>5</span></div>
+                    <div class="step active"><span>6</span></div>
+                </div>
+
+                <h3>OGRZEWANIE, WODA, PANELE</h3>
+                <hr class="separator">
+                <div class="final-summary">
+                    <h4>Podsumowanie wprowadzonych danych:</h4>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="summary-label">Rodzaj budynku:</span>
+                            <span class="summary-value" id="summary-building-type">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Rok budowy:</span>
+                            <span class="summary-value" id="summary-construction-year">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Strefa klimatyczna:</span>
+                            <span class="summary-value" id="summary-location">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="separator"><hr class="separator">
+                <label>Główne źródło ciepła</label>
+                <select name="source_type" required="">
+                    <option value="air_to_water_hp">Pompa ciepła powietrze-woda</option>
+                    <option value="gas">Gaz</option>
+                    <option value="oil">Olej</option>
+                    <option value="biomass">Biomasa</option>
+                    <option value="district_heating">Ciepło sieciowe</option>
+                </select>
+                <hr class="separator"><hr class="separator">
+
+                <label>Docelowa temperatura (°C)</label>
+                <input max="30" min="15" name="indoor_temperature" type="number" value="21"/>
+                <hr class="separator"><hr class="separator">
+                <label>Wentylacja:</label>
+                <select name="ventilation_type">
+                    <option value="natural">Grawitacyjna, naturalna</option>
+                    <option value="mechanical">Mechaniczna</option>
+                    <option value="mechanical_recovery">Mechaniczna z rekuperacją</option>
+                </select>
+                <hr class="separator"><hr class="separator">
+
+                <label>Typ instalacji grzewczej w budynku:</label>
+                <div class="form-field__select-wrapper">
+                    <select name="heating_type" required class="form-select">
+                        <option value="underfloor">Ogrzewanie podłogowe</option>
+                        <option value="radiators">Kaloryfery / grzejniki</option>
+                        <option value="mixed">Mieszane (podłogówka + kaloryfery)</option>
+                    </select>
+                    <span class="tooltip-icon-wrapper" tabindex="0">
+                        <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                        <span class="tooltip-text">Jeżeli masz podłogówkę i np. dodatkowe 2 grzejniki łazienkowe - w dalszym ciągu
+                            wybierasz ogrzewanie podłogowe. Układ mieszany wybierasz, gdy faktycznie masz 2 strefy z różnymi odbiornikami ciepła.
+                        </span>
+                    </span>
+                </div>
+                <hr class="separator"><hr class="separator">
+
+                <label>Czy pompa ma przygotowywać ciepłą wodę użytkową?</label>
+                <div class="form-field__checkbox-inline">
+                    <input id="includeHotWater" name="include_hot_water" type="checkbox" value="true" />
+                    <label for="includeHotWater">TAK</label>
+                    <span class="tooltip-icon-wrapper" tabindex="0">
+                        <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                        <span class="tooltip-text">Wyłącz tylko jeśli posiadasz inne źródło ciepłej wody i nie zamierzasz ogrzewać
+                            zasobnika na wodę kranową za pomocą pompy ciepła.
+                        </span>
+                    </span>
+                </div>
+                <hr class="separator">
+
+                <div id="hotWaterOptions">
+                    <label>Liczba mieszkańców</label>
+                    <select name="hot_water_persons">
+                        <option value="1">1 osoba</option>
+                        <option value="2">2 osoby</option>
+                        <option value="4" selected>3-4 osoby</option>
+                        <option value="6">5-6 osób</option>
+                        <option value="8">7+ osób</option>
+                    </select>
+                    <hr class="separator">
+
+                    <label for="hot_water_usage">Zużycie ciepłej wody:</label>
+                    <div class="form-field__select-wrapper">
+                        <select name="hot_water_usage" id="hot_water_usage" required class="form-select">
+                            <option value="shower">Małe zużycie</option>
+                            <option value="shower_bath" selected>Średnie zużycie</option>
+                            <option value="bath">Duże zużycie</option>
+                        </select>
+                        <span class="tooltip-icon-wrapper" tabindex="0">
+                            <img src="https://topinstal.com.pl/pictures/info-light.png" alt="Info" class="tooltip-icon" />
+                            <span class="tooltip-text">Małe: tylko umywalka i prysznic. Średnie: dodatkowa wanna, zmywarka. Duże: więcej punktów poboru wody, częste kąpiele w wannie.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <hr class="separator">
+                <div class="btn-row"> 
+                    <button class="btn-prev" type="button">Cofnij</button>
+                    <button class="btn-finish" type="button">SPRAWDŹ WYNIK</button>
+                </div>
+            </div>
+
+            <!-- ZORDON 3.0 - Sekcja Wyników Ultra Premium -->
+            <section class="results-wrapper section" data-tab="6">
+                <div class="progress-bar-premium" data-step="6">
+                    <div class="step completed"><span>1</span></div>
+                    <div class="step completed"><span>2</span></div>
+                    <div class="step completed"><span>3</span></div>
+                    <div class="step completed"><span>4</span></div>
+                    <div class="step completed"><span>5</span></div>
+                    <div class="step active"><span>6</span></div>
+                </div>
+
+                <!-- PROFIL ENERGETYCZNY - WYNIKI OBLICZEŃ -->
+                <div class="energy-profile-section glass-box">
+                    <h2 class="result-title">Twój profil energetyczny - WYNIK</h2>
+                    <p class="result-subtitle">Kompleksowa analiza zapotrzebowania na ciepło dla Twojego budynku</p>
+
+                    <div class="result-grid">
+                        <div class="result-item"><span class="icon-squares">Powierzchnia całkowita</span> <strong id="r-total-area">...</strong></div>
+                        <div class="result-item"><span class="icon-flame">Powierzchnia ogrzewana</span> <strong id="r-heated-area">...</strong></div>
+                        <div class="result-item"><span class="icon-power">Moc maksymalna (c.o.)</span> <strong id="r-max-power">...</strong></div>
+                        <div class="result-item"><span class="icon-drop">Moc CWU</span> <strong id="r-cwu">...</strong></div>
+                        <div class="result-item"><span class="icon-chart">Zużycie roczne</span> <strong id="r-energy">...</strong></div>
+                        <div class="result-item"><span class="icon-thermometer">Temperatura projektowa</span> <strong id="r-temp">...</strong></div>
+                        <div class="result-item"><span class="icon-target">Punkt biwalentny</span> <strong id="r-bi-power">...</strong></div>
+                        <div class="result-item"><span class="icon-globe">Temperatura średnioroczna</span> <strong id="r-temp-avg">...</strong></div>
+                        <div class="result-item"><span class="icon-power">Moc średnia</span> <strong id="r-avg-power">...</strong></div>
+                    </div>
+                </div>
+
+                <!-- SLIDERY Z POMPAMI -->
+                <div id="pump-recommendation-zone"></div>
+
+                <!-- PRZYCISKI FUNKCJONALNE -->
+                <div class="results-actions glass-box">
+                    <div class="action-row primary-actions">
+                        <button type="button" id="download-pdf-btn">Pobierz raport PDF</button>                    
+                    </div>
+
+                    <!-- FORMULARZ KONTAKTOWY DLA PDF (ukryty domyślnie) -->
+                    <div id="pdf-contact-form" class="pdf-contact-form hidden">
+                        <div class="contact-form-content">
+                            <div class="form-header">
+                                <h4><i class="fas fa-envelope"></i> Otrzymaj pełny raport energetyczny</h4>
+                                <p>Pełny raport energetyczny z doborem mocy pompy otrzymasz drogą mailową</p>
+                            </div>
+
+                            <div class="form-fields">
+                                <div class="form-field">
+                                    <label for="customer-email">Email <span class="required">*</span></label>
+                                    <input type="email" id="customer-email" class="contact-input" placeholder="twoj@email.pl" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="customer-postal-code">Kod pocztowy <span class="required">*</span></label>
+                                    <input type="text" id="customer-postal-code" class="contact-input" placeholder="00-000" maxlength="6" required>
+                                    <small class="field-note">Dla celów statystycznych</small>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="action-btn primary full-width" onclick="collectCustomerData()">
+                                    <i class="fas fa-paper-plane"></i> Odbierz raport cieplny PDF
+                                </button>
+                                <button class="action-btn cancel-btn" onclick="hidePDFContactForm()">
+                                    <i class="fas fa-times"></i> Anuluj
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-row secondary-actions">
+                        <button class="action-btn secondary" onclick="goBackToForm()">
+                            <i class="fas fa-arrow-left"></i> Wróć do formularza
+                        </button>
+                        <button class="action-btn tertiary" onclick="startNewCalculation()">
+                            <i class="fas fa-calculator"></i> Nowe obliczenie
+                        </button>
+                        <button class="action-btn tertiary disabled-feature" disabled data-tooltip="Wkrótce dostępne" onclick="window.open('https://topinstal.com.pl/konfigurator', '_blank')">
+                            <i class="fas fa-cogs"></i> Konfigurator
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+        <!-- 🧩 TRYB 2: AI Kalkulator PDF -->
+        <form id="heatCalcMode2" class="hidden section" novalidate>
+            <div class="section" data-tab="0">
+                <!-- Pasek postępu -->
+                <div class="progress-bar-premium" data-step="1">
+                    <div class="step active"><span>1</span></div>
+                    <div class="step"><span>2</span></div>
+                    <div class="step"><span>3</span></div>
+                </div>
+
+                <div class="formularz-z-mapa">
+                    <div class="formularz">
+                        <div class="bordered-text">
+                            <h3>AI ANALIZA PROJEKTU</h3>
+                            <label>
+                                - Prześlij PDF projektu budowlanego<br>
+                                - AI automatycznie wyciągnie wszystkie parametry<br>
+                                - Otrzymasz precyzyjny dobór pompy ciepła<br>
+                                - Proces trwa około 30-60 sekund
+                            </label>
+                        </div>
+
+                        <h3>UPLOAD PROJEKTU PDF</h3>
+                        <hr class="separator">
+
+                        <!-- AI PDF Upload Section -->
+                        <div class="pdf-upload-section">
+                            <div class="upload-area" id="pdf-upload-area-mode2">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <p class="upload-text">Przeciągnij i upuść projekt PDF tutaj</p>
+                                    <p class="upload-subtext">lub kliknij aby wybrać plik</p>
+                                    <input type="file" id="pdf-file-input-mode2" accept=".pdf" style="display: none;">
+                                </div>
+                            </div>
+
+                            <div id="upload-progress-mode2" class="upload-progress hidden">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill-mode2"></div>
+                                </div>
+                                <p class="progress-text" id="progress-text-mode2">Analizowanie projektu z AI...</p>
+                            </div>
+
+                            <div id="ai-analysis-results-mode2" class="ai-results hidden">
+                                <div class="results-header">
+                                    <i class="fas fa-robot"></i>
+                                    <h4>Wyniki analizy AI</h4>
+                                </div>
+                                <div id="ai-extracted-data-mode2" class="extracted-data">
+                                    <!-- AI results will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-row">
+                            <button type="button" class="action-btn primary" id="analyze-with-ai-mode2" disabled>
+                                <i class="fas fa-magic"></i> Analizuj projekt z AI
+                            </button>
+                            <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                                <i class="fas fa-arrow-left"></i> Powrót
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 🧩 TRYB 3: Modernizacja Kalkulator -->
+        <form id="heatCalcMode3" class="hidden section" novalidate>
+            <div class="section" data-tab="0">
+                <!-- Pasek postępu -->
+                <div class="progress-bar-premium" data-step="1">
+                    <div class="step active"><span>1</span></div>
+                    <div class="step"><span>2</span></div>
+                    <div class="step"><span>3</span></div>
+                </div>
+
+                <div class="formularz-z-mapa">
+                    <div class="formularz">
+                        <div class="bordered-text">
+                            <h3>AUDYT ENERGETYCZNY</h3>
+                            <label>
+                                - Obliczenia na podstawie danych z audytu OZC<br>
+                                - Dostosowane dla istniejących budynków<br>
+                                - Uwzględnienie stanu termomodernizacji<br>
+                                - Precyzyjny dobór pompy ciepła
+                            </label>
+                        </div>
+
+                        <h3>DANE Z AUDYTU ENERGETYCZNEGO</h3>
+                        <hr class="separator">
+
+                        <label class="form-label">Powierzchnia użytkowa budynku: <span class="required">*</span></label>
+                        <input type="number" id="audit_area" name="area" placeholder="150" min="50" max="1000" class="form-input" required>
+                        <small class="field-note">m² (z audytu energetycznego)</small>
+
+                        <label class="form-label">Roczne zużycie energii: <span class="required">*</span></label>
+                        <input type="number" id="annual_consumption" name="consumption" placeholder="25000" min="5000" max="100000" class="form-input" required>
+                        <small class="field-note">kWh/rok (ogrzewanie + c.w.u.)</small>
+
+                        <label class="form-label">Standard energetyczny budynku: <span class="required">*</span></label>
+                        <select id="energy_standard" name="standard" class="form-select" required>
+                            <option value="">-- Wybierz standard --</option>
+                            <option value="old">Stary budynek (przed 1990)</option>
+                            <option value="medium">Średni standard (1990-2010)</option>
+                            <option value="modern">Nowoczesny (po 2010)</option>
+                            <option value="passive">Dom pasywny</option>
+                        </select>
+
+                        <label class="form-label">Stan termomodernizacji: <span class="required">*</span></label>
+                        <select id="insulation_level" name="insulation" class="form-select" required>
+                            <option value="">-- Wybierz stan --</option>
+                            <option value="none">Brak ocieplenia</option>
+                            <option value="partial">Częściowe ocieplenie</option>
+                            <option value="full">Pełna termomodernizacja</option>
+                        </select>
+
+                        <div class="action-row">
+                            <button type="button" class="action-btn primary" onclick="calculateMode3()">
+                                <i class="fas fa-calculator"></i> Oblicz na podstawie audytu
+                            </button>
+                            <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                                <i class="fas fa-arrow-left"></i> Powrót
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 🧩 TRYB 4: Znana Moc Kalkulator -->
+        <form id="heatCalcMode4" class="hidden section" novalidate>
+            <div class="section" data-tab="0">
+                <!-- Pasek postępu -->
+                <div class="progress-bar-premium" data-step="1">
+                    <div class="step active"><span>1</span></div>
+                    <div class="step"><span>2</span></div>
+                </div>
+
+                <div class="formularz-z-mapa">
+                    <div class="formularz">
+                        <div class="bordered-text">
+                            <h3>WPROWADŹ ZNANĄ MOC</h3>
+                            <label>
+                                - Podaj bezpośrednio moc pompy ciepła<br>
+                                - Pomiń obliczenia cieplne<br>
+                                - Przejdź od razu do konfiguracji<br>
+                                - Natychmiastowy dobór modelu Panasonic
+                            </label>
+                        </div>
+
+                        <h3>SPECYFIKACJA MOCY</h3>
+                        <hr class="separator">
+
+                        <label class="form-label">Moc pompy ciepła: <span class="required">*</span></label>
+                        <input type="number" id="manual_power" name="power" placeholder="8.5" step="0.1" min="1" max="50" class="form-input" required>
+                        <small class="field-note">kW (moc grzewcza przy A2/W35)</small>
+
+                        <label class="form-label">Źródło informacji o mocy: <span class="required">*</span></label>
+                        <select id="power_source" name="source" class="form-select" required>
+                            <option value="">-- Wybierz źródło --</option>
+                            <option value="audit">Audyt energetyczny</option>
+                            <option value="calculation">Własne obliczenia</option>
+                            <option value="installer">Zalecenia instalatora</option>
+                            <option value="existing">Istniejąca instalacja</option>
+                            <option value="other">Inne źródło</option>
+                        </select>
+
+                        <label class="form-label">Powierzchnia budynku (opcjonalnie):</label>
+                        <input type="number" id="building_area_mode4" name="area" placeholder="150" min="50" max="1000" class="form-input">
+                        <small class="field-note">m² (do celów weryfikacji)</small>
+
+                        <div class="action-row">
+                            <button type="button" class="action-btn primary" onclick="calculateMode4()">
+                                <i class="fas fa-cogs"></i> Przejdź do konfiguracji
+                            </button>
+                            <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                                <i class="fas fa-arrow-left"></i> Powrót
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 📐 TRYB 2: Budowa domu – dane z projektu -->
+        <section id="form-mode2-main" class="section hidden">
+            <div class="mode-indicator">
+                <div class="mode-icon">📐</div>
+                <div>Tryb: Budowa domu - projekt techniczny</div>
+            </div>
+
+            <div class="formularz">
+                <h3>ANALIZA PROJEKTU Z AI</h3>
+                <hr class="separator">
+                <p class="mode-description">Prześlij projekt budowlany (PDF) - AI automatycznie wyciągnie dane do doboru pompy</p>
+
+                <!-- AI PDF Upload Section -->
+                <div class="pdf-upload-section">
+                    <div class="upload-area" id="pdf-upload-area-mode2" onclick="document.getElementById('pdf-file-input-mode2').click()">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <p class="upload-text">Przeciągnij i upuść projekt PDF tutaj</p>
+                            <p class="upload-subtext">lub kliknij aby wybrać plik</p>
+                            <input type="file" id="pdf-file-input-mode2" accept=".pdf" style="display: none;" onchange="handleMainPDFUpload(this)">
+                        </div>
+                    </div>
+
+                    <div id="upload-progress" class="upload-progress hidden">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <p class="progress-text" id="progress-text">Analizowanie projektu z AI...</p>
+                    </div>
+
+                    <div id="ai-analysis-results" class="ai-results hidden">
+                        <div class="results-header">
+                            <i class="fas fa-robot"></i>
+                            <h4>Wyniki analizy AI</h4>
+                        </div>
+                        <div id="ai-extracted-data" class="extracted-data">
+                            <!-- AI results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Input Section (fallback) -->
+                <div class="manual-input-section" id="manual-input-section">
+                    <h4>LUB wprowadź dane ręcznie:</h4>
+
+                    <label class="form-label">Wskaźnik EU z projektu: <span class="required">*</span></label>
+                    <input type="number" id="project_eu" name="eu_value" placeholder="120" min="50" max="300" step="1" class="form-input">
+                    <small class="field-note">kWh/m²·rok (z projektu energetycznego)</small>
+
+                    <label class="form-label">Powierzchnia użytkowa: <span class="required">*</span></label>
+                    <input type="number" id="project_area" name="area" placeholder="150" min="50" max="1000" class="form-input">
+                    <small class="field-note">m² (powierzchnia podłóg kondygnacji nadziemnych)</small>
+
+                    <label class="form-label">Strefa klimatyczna: <span class="required">*</span></label>
+                    <select id="project_climate" name="climate_zone" class="form-select">
+                        <option value="">-- Wybierz strefę klimatyczną --</option>
+                        <option value="I">I - Północ (Suwałki, Białystok)</option>
+                        <option value="II">II - Północny wschód (Warszawa)</option>
+                        <option value="III">III - Centrum (Łódź, Lublin)</option>
+                        <option value="IV">IV - Południe (Kraków, Katowice)</option>
+                        <option value="V">V - Południowy zachód (Wrocław)</option>
+                    </select>
+                </div>
+
+                <div class="action-row">
+                    <button type="button" class="action-btn primary" id="analyze-with-ai-mode2" onclick="startAIPDFAnalysis()" disabled>
+                        <i class="fas fa-magic"></i> Analizuj projekt z AI
+                    </button>
+                    <button type="button" class="action-btn primary" id="calculate-mode2">
+                        <i class="fas fa-calculator"></i> Oblicz ręcznie
+                    </button>
+                    <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                        <i class="fas fa-arrow-left"></i> Powrót do wyboru trybu
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ♻️ TRYB 3: Modernizacja – dane z audytu OZC -->
+        <section id="form-mode3" class="section hidden">
+            <div class="mode-indicator">
+                <div class="mode-icon">♻️</div>
+                <div>Tryb: Modernizacja - audyt energetyczny</div>
+            </div>
+
+            <div class="formularz">
+                <h3>DANE Z AUDYTU ENERGETYCZNEGO</h3>
+                <hr class="separator">
+                <p class="mode-description">Wykorzystanie danych z istniejącego audytu OZC</p>
+
+                <label class="form-label">Zapotrzebowanie roczne na ciepło: <span class="required">*</span></label>
+                <input type="number" id="audit_annual" name="annual_demand" placeholder="18000" min="5000" max="50000" step="100" required class="form-input">
+                <small class="field-note">kWh/rok (z audytu energetycznego)</small>
+
+                <label class="form-label">Powierzchnia użytkowa: <span class="required">*</span></label>
+                <input type="number" id="audit_area" name="area" placeholder="150" min="50" max="1000" required class="form-input">
+                <small class="field-note">m² (powierzchnia ogrzewana)</small>
+
+                <label class="form-label">Temperatura projektowa: <span class="required">*</span></label>
+                <select id="audit_temp" name="design_temp" required class="form-select">
+                    <option value="">-- Wybierz temperaturę projektową --</option>
+                    <option value="-16">-16°C (strefa I)</option>
+                    <option value="-18">-18°C (strefa II)</option>
+                    <option value="-20">-20°C (strefa III)</option>
+                    <option value="-22">-22°C (strefa IV i V)</option>
+                </select>
+
+                <div class="action-row">
+                    <button type="button" class="action-btn primary" id="calculate-mode3">
+                        <i class="fas fa-calculator"></i> Oblicz na podstawie audytu
+                    </button>
+                    <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                        <i class="fas fa-arrow-left"></i> Powrót do wyboru trybu
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⚡ TRYB 4: Znana moc pompy -->
+        <section id="form-mode4" class="section hidden">
+            <div class="mode-indicator">
+                <div class="mode-icon">⚡</div>
+                <div>Tryb: Znana moc pompy</div>
+            </div>
+
+            <div class="formularz">
+                <h3>PODAJ KONKRETNĄ MOC POMPY</h3>
+                <hr class="separator">
+                <p class="mode-description">Przejście bezpośrednio do konfiguracji z podaną mocą</p>
+
+                <label class="form-label">Moc pompy ciepła: <span class="required">*</span></label>
+                <input type="number" id="manual_power" name="manual_power_kw" placeholder="12.5" step="0.1" min="1" max="50" required class="form-input">
+                <small class="field-note">kW (moc grzewcza pompy ciepła)</small>
+
+                <label class="form-label">Źródło danych: <span class="required">*</span></label>
+                <select id="power_source" name="power_source" required class="form-select">
+                    <option value="">-- Skąd masz tę wartość? --</option>
+                    <option value="audit">Z audytu energetycznego</option>
+                    <option value="project">Z projektu technicznego</option>
+                    <option value="calculation">Z własnych obliczeń</option>
+                    <option value="installer">Od instalatora</option>
+                    <option value="other">Inne źródło</option>
+                </select>
+
+                <div class="action-row">
+                    <button type="button" class="action-btn primary" id="calculate-mode4">
+                        <i class="fas fa-check"></i> Przejdź do konfiguracji
+                    </button>
+                    <button type="button" class="action-btn secondary" onclick="showWelcomeScreen()">
+                        <i class="fas fa-arrow-left"></i> Powrót do wyboru trybu
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Footer -->
+        <div class="authority-header">
+            <div class="brand-content">
+                <img src="https://topinstal.com.pl/pictures/www-mobile.png" alt="TOP-INSTAL" class="brand-logo">
+                <div class="brand-text">
+                    <p><strong>TOP-INSTAL</strong> - Profesjonalne instalacje</p>
+                    <p>Autoryzowany partner Panasonic i Mitsubishi Electric</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL PREMIUM AI-COACH DOCK -->
+        <div id="ai-coach-dock" aria-live="polite">
+          <div class="ai-coach-dock__content">
+            <span id="ai-coach-icon" class="ai-coach-dock__icon" aria-label="AI Asystent">
+              <!-- Normalna ikona -->
+              <svg id="ai-icon-svg" viewBox="0 0 20 20" fill="none" width="22" height="22">
+                <circle cx="10" cy="10" r="9" stroke="#C20118" stroke-width="2"/>
+                <path d="M10 13v.01" stroke="#C20118" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10 7a2 2 0 0 1 2 2c0 .828-.895 1.464-1.435 1.947C10.166 11.256 10 12 10 12" stroke="#2D3657" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <!-- Animacja ładowania (ukryta na start) -->
+              <span id="ai-coach-loader" class="ai-coach-dock__loader" hidden>
+                <svg viewBox="0 0 40 40" width="22" height="22">
+                  <circle cx="20" cy="20" r="16" stroke="#C20118" stroke-width="3" fill="none" opacity="0.17"/>
+                  <circle cx="20" cy="20" r="16" stroke="#C20118" stroke-width="3" fill="none" stroke-dasharray="100" stroke-dashoffset="75" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="1s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </span>
+            </span>
+            <span id="ai-coach-dock-text" class="ai-coach-dock__text">INTELIGENTNA POMOC</span>
+            <button id="ai-coach-pause" class="ai-coach-dock__btn" aria-label="Wstrzymaj AI" title="Wstrzymaj AI">⏸️</button>
+            <button id="ai-coach-resume" class="ai-coach-dock__btn" aria-label="Wznów AI" title="Wznów AI" hidden>▶️</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Complete JavaScript Functions in HTML -->
+    <script>
+        // Welcome Screen Functions - prostota i stabilność
+        function activateMode(modeType) {
+            console.log('Activating mode:', modeType);
+
+            // Hide welcome screen
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.classList.add('hidden');
+            welcomeScreen.classList.remove('active');
+
+            // Show appropriate section based on mode
+            switch(modeType) {
+                case 'mode1':
+                    // Show full calculator form
+                    const fullForm = document.getElementById('heatCalcFormFull');
+                    if (fullForm) {
+                        fullForm.classList.remove('hidden');
+                        fullForm.classList.add('active');
+                        // Initialize calculator if needed
+                        if (typeof initializeCalculator === 'function') {
+                            initializeCalculator();
+                        }
+                        console.log('Full calculator activated');
+                    }
+                    break;
+
+                case 'mode2':
+                    // Show construction project mode
+                    showConstructionProjectMode();
+                    console.log('Construction project mode activated');
+                    break;
+
+                case 'mode3':
+                    // Show modernization mode
+                    showModernizationMode();
+                    console.log('Modernization mode activated');
+                    break;
+
+                case 'mode4':
+                    // Show known power mode
+                    showKnownPowerMode();
+                    console.log('Known power mode activated');
+                    break;
+
+                default:
+                    console.warn('Unknown mode:', modeType);
+            }
+        }
+
+        // Alias for backward compatibility
+        function switchToMode(modeType) {
+            activateMode(modeType);
+        }
+
+        function showConstructionProjectMode() {
+            console.log('🏗️ Activating Construction Project Mode (AI PDF Analysis)');
+
+            // Hide welcome screen
+            const welcomeScreen = document.getElementById('welcome-screen');
+            if (welcomeScreen) {
+                welcomeScreen.classList.add('hidden');
+                welcomeScreen.classList.remove('active');
+            }
+
+            // Hide all other mode sections
+            const allModeSections = document.querySelectorAll('#form-mode2, #form-mode3, #form-mode4, #heatCalcFormFull, #heatCalcMode3, #heatCalcMode4');
+            allModeSections.forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active');
+            });
+
+            // Show Mode 2 calculator with AI PDF analysis
+            const mode2Calculator = document.getElementById('heatCalcMode2');
+            if (mode2Calculator) {
+                mode2Calculator.classList.remove('hidden');
+                mode2Calculator.classList.add('active');
+
+                // Also activate the inner section
+                const innerSection = mode2Calculator.querySelector('[data-tab="0"]');
+                if (innerSection) {
+                    innerSection.classList.add('active');
+                }
+
+                mode2Calculator.scrollIntoView({ behavior: 'smooth' });
+                console.log('✅ Mode 2 Calculator with AI PDF activated');
+            } else {
+                console.error('❌ Mode 2 Calculator not found');
+            }
+        }
+
+        function showModernizationMode() {
+            const mode3Section = document.getElementById('form-mode3');
+            if (mode3Section) {
+                mode3Section.classList.remove('hidden');
+                mode3Section.classList.add('active');
+                mode3Section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showKnownPowerMode() {
+            const mode4Section = document.getElementById('form-mode4');
+            if (mode4Section) {
+                mode4Section.classList.remove('hidden');
+                mode4Section.classList.add('active');
+                mode4Section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showWelcomeScreen() {
+            console.log('Returning to welcome screen');
+
+            // Hide all mode sections
+            const allSections = document.querySelectorAll('.section');
+            allSections.forEach(section => {
+                if (section.id !== 'welcome-screen') {
+                    section.classList.add('hidden');
+                    section.classList.remove('active');
+                }
+            });
+
+            // Show welcome screen
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.classList.remove('hidden');
+            welcomeScreen.classList.add('active');
+            welcomeScreen.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Calculation functions for each mode
+        function calculateMode2() {
+            const area = parseFloat(document.getElementById('project_area').value);
+            const eu = parseFloat(document.getElementById('project_eu').value);
+
+            if (!area || !eu) {
+                alert('Proszę wypełnić wszystkie pola');
+                return;
+            }
+
+            // Simple calculation for mode 2
+            const power = (area * eu) / 1000 * 0.8; // Simplified formula
+            showResults('Mode 2', { power: power.toFixed(1), area, eu });
+        }
+
+        function calculateMode3() {
+            const area = parseFloat(document.getElementById('modern_area').value);
+            const consumption = parseFloat(document.getElementById('annual_consumption').value);
+            const standard = document.getElementById('energy_standard').value;
+
+            if (!area || !consumption || !standard) {
+                alert('Proszę wypełnić wszystkie pola');
+                return;
+            }
+
+            // Simple calculation for mode 3
+            const efficiency = getEfficiencyByStandard(standard);
+            const power = (consumption * efficiency) / 2000; // Simplified formula
+            showResults('Mode 3', { power: power.toFixed(1), area, consumption, standard });
+        }
+
+        function calculateMode4() {
+            const power = parseFloat(document.getElementById('manual_power').value);
+            const source = document.getElementById('power_source').value;
+
+            if (!power || !source) {
+                alert('Proszę wypełnić wszystkie pola');
+                return;
+            }
+
+            showResults('Mode 4', { power: power.toFixed(1), source });
+        }
+
+        function getEfficiencyByStandard(standard) {
+            const efficiencies = {
+                'old': 0.3,
+                'medium': 0.5,
+                'new': 0.7,
+                'passive': 0.9
+            };
+            return efficiencies[standard] || 0.5;
+        }
+
+        function showResults(mode, data) {
+            // Hide current sections
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+
+            // Show existing results section or create if needed
+            let resultsSection = document.getElementById('results-section');
+            if (!resultsSection) {
+                resultsSection = document.createElement('section');
+                resultsSection.id = 'results-section';
+                resultsSection.className = 'section active';
+                document.body.appendChild(resultsSection);
+            } else {
+                resultsSection.classList.remove('hidden');
+                resultsSection.classList.add('active');
+            }
+
+            resultsSection.innerHTML = `
+                <div class="formularz">
+                    <div class="results-header">
+                        <h3>Wyniki obliczeń - ${mode}</h3>
+                        <button onclick="showWelcomeScreen()" class="action-btn secondary">← Nowe obliczenie</button>
+                    </div>
+                    <div class="results-content">
+                        <div class="power-result">
+                            <h4>Rekomendowana moc pompy ciepła:</h4>
+                            <div class="power-value" style="font-size: 2em; color: #990013; font-weight: bold;">${data.power} kW</div>
+                        </div>
+                        <div class="pump-recommendations">
+                            <h4>Rekomendowane modele Panasonic:</h4>
+                            ${generatePumpRecommendations(parseFloat(data.power))}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generatePumpRecommendations(power) {
+            const pumps = [
+                { name: 'Aquarea T-CAP 9kW', power: 9, price: '28 000' },
+                { name: 'Aquarea T-CAP 12kW', power: 12, price: '32 000' },
+                { name: 'Aquarea T-CAP 16kW', power: 16, price: '38 000' }
+            ];
+
+            const suitable = pumps.filter(pump => pump.power >= power);
+            if (suitable.length === 0) suitable.push(pumps[pumps.length - 1]);
+
+            return suitable.map(pump => `
+                <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <h5 style="color: #990013; margin: 0 0 10px 0;">${pump.name}</h5>
+                    <p style="margin: 5px 0;">Moc: ${pump.power} kW</p>
+                    <p style="margin: 5px 0;">Cena: ${pump.price} PLN</p>
+                </div>
+            `).join('');
+        }
+
+        // PDF Upload Handler
+        function handlePDFUpload(file) {
+            if (!file) return;
+
+            console.log('Uploading PDF:', file.name);
+            const formData = new FormData();
+            formData.append('pdf', file);
+
+            // Show upload progress
+            const uploadZone = document.getElementById('pdf-upload-zone');
+            if (uploadZone) {
+                uploadZone.innerHTML = '<div style="text-align: center; padding: 20px;">Analizuję PDF...</div>';
+            }
+
+            fetch('/api/analyze-pdf', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayPDFAnalysis(data);
+                } else {
+                    showError('Błąd analizy PDF: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showError('Błąd połączenia z serwerem');
+            });
+        }
+
+        function displayPDFAnalysis(data) {
+            const uploadZone = document.getElementById('pdf-upload-zone');
+            if (uploadZone) {
+                uploadZone.innerHTML = `
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 8px;">
+                        <h4>Wyniki analizy PDF:</h4>
+                        <div style="margin: 15px 0;">
+                            <p><strong>Powierzchnia:</strong> ${data.extracted_data.area || 'Nie znaleziono'} m²</p>
+                            <p><strong>Moc obliczona:</strong> ${data.calculated_power || 'Nie obliczono'} kW</p>
+                            <p><strong>Rekomendacja:</strong> ${data.recommended_model || 'Brak'}</p>
+                        </div>
+                        <button onclick="acceptPDFData(${JSON.stringify(data).replace(/"/g, '&quot;')})" class="action-btn primary">
+                            Użyj tych danych
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function acceptPDFData(data) {
+            if (data.calculated_power) {
+                showResults('Mode 2 (PDF)', { 
+                    power: data.calculated_power.toFixed(1), 
+                    area: data.extracted_data.area,
+                    source: 'Analiza PDF AI'
+                });
+            }
+        }
+
+        function showError(message) {
+            const uploadZone = document.getElementById('pdf-upload-zone');
+            if (uploadZone) {
+                uploadZone.innerHTML = `
+                    <div style="background: #fef2f2; color: #dc2626; padding: 20px; border-radius: 8px;">
+                        <p>${message}</p>
+                        <button onclick="location.reload()" class="action-btn secondary">Spróbuj ponownie</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Form validation for Mode 2
+        function validateFormMode2() {
+            const postalCode = document.getElementById('postal-code-2');
+            const buildingType = document.querySelector('input[name="building-type-2"]:checked');
+            const heatPumpPurpose = document.querySelector('input[name="heat-pump-purpose-2"]:checked');
+            const pdfFile = document.getElementById('pdf-upload-mode2');
+            const continueBtn = document.querySelector('#form-mode2 .btn-continue');
+
+            // Check all required fields
+            const isPostalCodeValid = postalCode && postalCode.value && /^\d{2}-\d{3}$/.test(postalCode.value);
+            const isBuildingTypeValid = buildingType && buildingType.value;
+            const isHeatPumpPurposeValid = heatPumpPurpose && heatPumpPurpose.value;
+            const isPdfFileValid = pdfFile && pdfFile.files && pdfFile.files.length > 0;
+
+            const isFormValid = isPostalCodeValid && isBuildingTypeValid && isHeatPumpPurposeValid && isPdfFileValid;
+
+            if (continueBtn) {
+                continueBtn.disabled = !isFormValid;
+                console.log('Form Mode 2 validation:', {
+                    postalCode: isPostalCodeValid,
+                    buildingType: isBuildingTypeValid,
+                    heatPumpPurpose: isHeatPumpPurposeValid,
+                    pdfFile: isPdfFileValid,
+                    isValid: isFormValid
+                });
+            }
+
+            return isFormValid;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Heat Pump Calculator ready');
+
+            // Setup mode calculation buttons
+            const mode2Btn = document.getElementById('calculate-mode2');
+            if (mode2Btn) {
+                mode2Btn.addEventListener('click', calculateMode2);
+            }
+
+            const mode3Btn = document.getElementById('calculate-mode3');
+            if (mode3Btn) {
+                mode3Btn.addEventListener('click', calculateMode3);
+            }
+
+            const mode4Btn = document.getElementById('calculate-mode4');
+            if (mode4Btn) {
+                mode4Btn.addEventListener('click', calculateMode4);
+            }
+
+            // Setup PDF upload for preliminary forms (form-mode2)
+            document.addEventListener('change', function(e) {
+                if (e.target.id === 'pdf-upload-mode2') {
+                    const file = e.target.files[0];
+                    if (file && file.type === 'application/pdf') {
+                        // Update upload area to show selected file
+                        const uploadText = document.getElementById('pdf-upload-text-mode2');
+                        if (uploadText) {
+                            uploadText.textContent = `✓ ${file.name} wybrany`;
+                        }
+
+                        // Enable continue button if all fields are valid
+                        validateFormMode2();
+                    }
+                }
+
+                // Also handle Mode 2 calculator PDF upload (fallback)
+                if (e.target.id === 'pdf-file-input-mode2') {
+                    const file = e.target.files[0];
+                    if (file && file.type === 'application/pdf') {
+                        // Update upload area to show selected file
+                        const uploadArea = document.getElementById('pdf-upload-area-mode2');
+                        const uploadText = uploadArea?.querySelector('.upload-text');
+                        if (uploadText) {
+                            uploadText.textContent = `✓ ${file.name} wybrany`;
+                            uploadArea.classList.add('file-selected');
+                        }
+
+                        // Enable analyze button
+const analyzeBtn = document.getElementById('analyze-with-ai-mode2');
+                        if (analyzeBtn) {
+                            analyzeBtn.disabled = false;
+                        }
+                    }
+                }
+            });
+
+            // Setup form validation for Mode 2
+            const mode2Form = document.getElementById('form-mode2');
+            if (mode2Form) {
+                const mode2Inputs = mode2Form.querySelectorAll('input[required], input[type="radio"], input[type="file"]');
+                mode2Inputs.forEach(input => {
+                    input.addEventListener('input', validateFormMode2);
+                    input.addEventListener('change', validateFormMode2);
+                });
+                
+                // Initial validation
+                setTimeout(validateFormMode2, 100);
+            }
+
+            // Setup Mode 2 PDF Analysis button
+            const mode2AnalyzeBtn = document.getElementById('analyze-with-ai-mode2');
+            if (mode2AnalyzeBtn) {
+                mode2AnalyzeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('🤖 Mode 2 AI Analysis button clicked');
+
+                    // Get PDF file
+                    const fileInput = document.getElementById('pdf-file-input-mode2');
+                    if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+                        alert('Proszę najpierw wybrać plik PDF do analizy');
+                        return;
+                    }
+
+                    // Call AI analysis function
+                    if (typeof analyzeProjectWithAI === 'function') {
+                        analyzeProjectWithAI(fileInput.files[0]);
+                    } else if (typeof startAIPDFAnalysis === 'function') {
+                        startAIPDFAnalysis();
+                    } else {
+                        console.error('❌ PDF analysis functions not available');
+                        alert('Błąd systemu - funkcja analizy PDF nie jest dostępna');
+                    }
+                });
+            }
+
+            // Setup PDF upload area click handler
+            const uploadArea = document.getElementById('pdf-upload-area-mode2');
+            if (uploadArea) {
+                uploadArea.addEventListener('click', function() {
+                    const fileInput = document.getElementById('pdf-file-input-mode2');
+                    if (fileInput) {
+                        fileInput.click();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- WYCENA 2025 - Updated paths according to new structure -->
+    <script src="frontend/js/calculatorInit.js"></script>
+    <script src="frontend/js/dynamicFields.js"></script>
+    <script src="frontend/js/errorHandling.js"></script>
+    <script src="frontend/js/userNotifications.js"></script>
+    <script src="frontend/js/formDataProcessor.js"></script>
+    <script src="frontend/js/tabNavigation.js"></script>
+    <script src="frontend/js/numberSpinners.js"></script>
+    <script src="frontend/js/floorRenderer.js"></script>
+    <script src="frontend/js/resultsRenderer.js"></script>
+    <script src="frontend/js/tooltipSystem.js"></script>
+    <script src="frontend/js/urlManager.js"></script>
+    <script src="frontend/js/pdfGenerator.js"></script>
+    <script src="frontend/js/emailSender.js"></script>
+    <script src="frontend/js/gdpr-compliance.js"></script>
+    <script src="frontend/js/ai-coach-dock.js"></script>
+    <script src="frontend/js/aiWatchers.js"></script>
+    <script src="frontend/js/elementor-fix.js"></script>
+    <script src="frontend/js/intelligentModeHandler.js"></script>
+    <script src="frontend/js/mode2Handler.js"></script>
+    <script src="controllers/routeController.js"></script>
+    <script src="services/api/client.js"></script>
+    <script src="services/pdf/analyzer.js"></script>
+    <script src="frontend/js/zordonState.js"></script>
+    <script src="frontend/js/cieploApiClient.js"></script>
+    <script src="controllers/uiRouter.js"></script>
+    <script src="emails/sender.js"></script>
+    <script src="frontend/js/pdfUploadHandler.js"></script>
+    <script src="frontend/js/welcomeScreen.js"></script>
+
+    <!-- Configuration object (replaces WordPress wp_localize_script) -->
+    <script>
+        window.topinstal_config = {
+            ajax_url: '', // No AJAX needed for standalone version
+            plugin_url: './', // Current directory
+            nonce: 'standalone_version' // Placeholder nonce
+        };
+    </script>
+
+    <!-- 🔰 HETZNER-STYLE WELCOME SCREEN JAVASCRIPT -->
+    <script>
+        // Global variables for Hetzner-style welcome screen
+        let currentSelectedMode = null;
+
+        // Show mode form with smooth scroll and animation
+        function showModeForm(mode) {
+            console.log('Showing mode form:', mode);
+
+            currentSelectedMode = mode;
+
+            // Hide all mode forms first
+            const allForms = document.querySelectorAll('.mode-form');
+            allForms.forEach(form => {
+                form.classList.remove('active');
+                form.classList.add('hidden');
+            });
+
+            // Show the mode forms container
+            const formsContainer = document.getElementById('mode-forms');
+            formsContainer.classList.remove('hidden');
+
+            // Show the specific form
+            setTimeout(() => {
+                const targetForm = document.getElementById(`form-${mode}`);
+                if (targetForm) {
+                    targetForm.classList.remove('hidden');
+                    setTimeout(() => {
+                        targetForm.classList.add('active');
+                    }, 100);
+
+                    // Smooth scroll to the form
+                    targetForm.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    // Setup form validation
+                    setupFormValidation(mode);
+                }
+            }, 200);
+        }
+
+        // Setup form validation for each mode
+        function setupFormValidation(mode) {
+            const form = document.getElementById(`form-${mode}`);
+            if (!form) return;
+
+            const continueBtn = form.querySelector('.btn-continue');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+
+            function validateForm() {
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                    }
+                });
+
+                // Special validation for Mode 2 (PDF upload)
+                if (mode === 'mode2') {
+                    const pdfInput = document.getElementById('pdf-upload');
+                    if (!pdfInput.files.length) {
+                        isValid = false;
+                    }
+                }
+
+                continueBtn.disabled = !isValid;
+            }
+
+            // Add event listeners
+            inputs.forEach(input => {
+                input.addEventListener('input', validateForm);
+                input.addEventListener('change', validateForm);
+            });
+
+            // Special handling for file upload
+            if (mode === 'mode2') {
+                const pdfInput = document.getElementById('pdf-upload');
+                const uploadZone = form.querySelector('.file-upload-zone');
+
+                pdfInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        uploadZone.innerHTML = `
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Plik: ${this.files[0].name}</span>
+                        `;
+                    }
+                    validateForm();
+                });
+
+                // Drag and drop functionality
+                uploadZone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.style.borderColor = '#C20118';
+                });
+
+                uploadZone.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.style.borderColor = 'rgba(203, 213, 225, 0.7)';
+                });
+
+                uploadZone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.style.borderColor = 'rgba(203, 213, 225, 0.7)';
+
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0 && files[0].type === 'application/pdf') {
+                        pdfInput.files = files;
+                        this.innerHTML = `
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Plik: ${files[0].name}</span>
+                        `;
+                        validateForm();
+                    }
+                });
+            }
+
+            // Initial validation
+            validateForm();
+        }
+
+        // Collect form data from the current mode
+        function collectFormData(mode) {
+            const data = {};
+            const form = document.getElementById(`form-${mode}`);
+
+            if (form) {
+                const inputs = form.querySelectorAll('input, select');
+                inputs.forEach(input => {
+                    if (input.type === 'radio') {
+                        if (input.checked) {
+                            data[input.name] = input.value;
+                        }
+                    } else if (input.type === 'file') {
+                        data[input.id] = input.files[0] || null;
+                    } else {
+                        data[input.id] = input.value;
+                    }
+                });
+            }
+
+            return data;
+        }
+
+        // Form validation function
+        function validateFormMode(mode) {
+            const form = document.getElementById(`form-${mode}`);
+            const button = form?.querySelector('.btn-continue');
+
+            if (!form || !button) {
+                console.warn(`Form validation: nie znaleziono form-${mode} lub przycisku`);
+                return;
+            }
+
+            // Get all required fields
+            const postalCodeInput = form.querySelector(`#postal-code-${mode}`);
+            const modeNumber = mode.replace('mode', '');
+            const buildingTypeRadios = form.querySelectorAll(`input[name="building-type-${modeNumber}"]`);
+            const purposeRadios = form.querySelectorAll(`input[name="heat-pump-purpose-${modeNumber}"]`);
+
+            // Check validation status
+            let isValid = true;
+
+            // Check postal code - must be exactly XX-XXX format
+            if (postalCodeInput && postalCodeInput.required) {
+                const postalCodeValue = postalCodeInput.value.trim();
+                const postalCodeValid = /^\d{2}-\d{3}$/.test(postalCodeValue) && postalCodeValue.length === 6;
+
+                if (!postalCodeValid) {
+                    isValid = false;
+                    // Add visual feedback
+                    postalCodeInput.style.borderColor = '#e53e3e';
+                } else {
+                    // Remove error styling
+                    postalCodeInput.style.borderColor = '';
+                }
+            }
+
+            // Check building type radio selection
+            const buildingTypeSelected = Array.from(buildingTypeRadios).some(radio => radio.checked);
+            if (!buildingTypeSelected) isValid = false;
+
+            // Check purpose radio selection
+            const purposeSelected = Array.from(purposeRadios).some(radio => radio.checked);
+            if (!purposeSelected) isValid = false;
+
+            // Special case for mode2 - also check PDF upload for completeness
+            if (mode === 'mode2') {
+                const pdfInput = form.querySelector('input[type="file"]');
+                if (pdfInput && !pdfInput.files.length) {
+                    // For mode2, we'll allow proceeding without PDF but user should know it's optional
+                }
+            }
+
+            // Special case for mode4 - also check power input
+            if (mode === 'mode4') {
+                const powerInput = form.querySelector('#known-power');
+                if (powerInput && powerInput.required) {
+                    const powerValue = parseFloat(powerInput.value);
+                    if (!powerValue || powerValue < 1 || powerValue > 50) {
+                        isValid = false;
+                    }
+                }
+            }
+
+            // Enable/disable button
+            button.disabled = !isValid;
+
+            if (isValid) {
+                button.classList.remove('disabled');
+            } else {
+                button.classList.add('disabled');
+            }
+        }
+
+        // Mode routing is now handled by intelligentModeHandler.js proceedToCalculator() function
+
+        // Add keyboard navigation for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focusedCard = document.activeElement;
+                if (focusedCard && focusedCard.classList.contains('mode-card')) {
+                    e.preventDefault();
+                    const mode = focusedCard.dataset.mode;
+                    showModeForm(mode);
+                }
+            }
+        });
+
+        // Initialize welcome screen
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Hetzner-style welcome screen initialized');
+
+            // Check if we should show a specific mode form from URL or storage
+            const urlParams = new URLSearchParams(window.location.search);
+            const modeParam = urlParams.get('mode');
+
+            if (modeParam && ['mode1', 'mode2', 'mode3', 'mode4'].includes(modeParam)) {
+                setTimeout(() => showModeForm(modeParam), 1000);
+            }
+
+            // Initialize form validation for all modes
+            setupFormValidation();
+        });
+
+        // Setup form validation event listeners
+        function setupFormValidation() {
+            const modes = ['mode1', 'mode2', 'mode3', 'mode4'];
+
+            modes.forEach(mode => {
+                const form = document.getElementById(`form-${mode}`);
+                if (!form) return;
+
+                // Setup postal code auto-formatting
+                const postalCodeInput = form.querySelector(`#postal-code-${mode}`);
+                if (postalCodeInput) {
+                    setupPostalCodeFormatting(postalCodeInput);
+                }
+
+                // Add event listeners to all inputs and radio buttons
+                const inputs = form.querySelectorAll('input, select');
+                inputs.forEach(input => {
+                    const events = ['input', 'change', 'blur'];
+                    events.forEach(event => {
+                        input.addEventListener(event, () => {
+                            // Small delay to ensure the change is processed
+                            setTimeout(() => validateFormMode(mode), 50);
+                        });
+                    });
+                });
+
+                // Initial validation
+                validateFormMode(mode);
+            });
+        }
+
+        // Auto-format postal code: XX-XXX
+        function setupPostalCodeFormatting(input) {
+            if (!input) return;
+
+            input.addEventListener('input', function(e) {
+                let value = e.target.value;
+                let cursorPosition = e.target.selectionStart;
+
+                // Remove all non-digit characters
+                let digits = value.replace(/\D/g, '');
+
+                // Limit to 5 digits max
+                if (digits.length > 5) {
+                    digits = digits.slice(0, 5);
+                }
+
+                // Format with hyphen: XX-XXX
+                let formatted = digits;
+                if (digits.length > 2) {
+                    formatted = digits.slice(0, 2) + '-' + digits.slice(2);
+                }
+
+                // Update input value
+                e.target.value = formatted;
+
+                // Adjust cursor position properly
+                let newCursorPosition = cursorPosition;
+
+                // If user typed the 3rd digit, move cursor after hyphen
+                if (digits.length === 3 && value.length === 2) {
+                    newCursorPosition = 4; // Position after "XX-"
+                } else if (cursorPosition === 3 && formatted.charAt(2) === '-') {
+                    newCursorPosition = 3; // Keep cursor before hyphen when editing
+                } else if (cursorPosition > 3 && formatted.length > cursorPosition) {
+                    newCursorPosition = cursorPosition;
+                } else {
+                    newCursorPosition = formatted.length; // End of input
+                }
+
+                setTimeout(() => {
+                    e.target.setSelectionRange(newCursorPosition, newCursorPosition);
+                }, 0);
+            });
+
+            input.addEventListener('keydown', function(e) {
+                // Allow backspace to work naturally
+                if (e.key === 'Backspace') {
+                    let cursorPosition = e.target.selectionStart;
+                    if (cursorPosition === 3 && e.target.value.charAt(2) === '-') {
+                        // If cursor is right after hyphen, move it before hyphen
+                        setTimeout(() => {
+                            e.target.setSelectionRange(2, 2);
+                        }, 0);
+                    }
+                }
+            });
+
+            // Handle paste events
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                let paste = (e.clipboardData || window.clipboardData).getData('text');
+
+                // Remove all non-digit characters
+                let digits = paste.replace(/\D/g, '');
+
+                // Limit to 5 digits max
+                if (digits.length > 5) {
+                    digits = digits.slice(0, 5);
+                }
+
+                // Format with hyphen: XX-XXX
+                let formatted = digits;
+                if (digits.length > 2) {
+                    formatted = digits.slice(0, 2) + '-' + digits.slice(2);
+                }
+
+                // Update input value
+                e.target.value = formatted;
+
+                // Trigger validation
+                e.target.dispatchEvent(new Event('input', { bubbles: true }));
+            });
+        }
+    </script>
+
+    <style>
+        .hetzner-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%), url('./static/hetzner-tech-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            margin-top: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Radio Button Styles */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .building-type-group .radio-option {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .building-type-group .radio-option:hover {
+            border-color: #990013;
+            box-shadow: 0 4px 12px rgba(153, 0, 19, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .building-type-group .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .building-type-group .radio-option input[type="radio"]:checked + .radio-custom {
+            background: #990013;
+            border-color: #990013;
+        }
+
+        .building-type-group .radio-option input[type="radio"]:checked + .radio-custom::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .building-type-group .radio-option input[type="radio"]:checked ~ .radio-label {
+            color: #990013;
+            font-weight: 600;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cbd5e0;
+            border-radius: 50%;
+            background: white;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #2d3748;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .radio-label i {
+            font-size: 20px;
+            color: #990013;
+            width: 24px;
+            text-align: center;
+        }
+
+        .radio-label span {
+            font-size: 15px;
+        }
+
+        /* Heat Pump Purpose Radio Styles */
+        .heat-pump-purpose-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .heat-pump-purpose-group .radio-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            text-align: center;
+        }
+
+        .heat-pump-purpose-group .radio-option:hover {
+            border-color: #990013;
+            box-shadow: 0 6px 20px rgba(153, 0, 19, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .heat-pump-purpose-group .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .heat-pump-purpose-group .radio-option input[type="radio"]:checked + .radio-custom {
+            background: #990013;
+            border-color: #990013;
+            box-shadow: 0 0 0 4px rgba(153, 0, 19, 0.2);
+        }
+
+        .heat-pump-purpose-group .radio-option input[type="radio"]:checked + .radio-custom::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .heat-pump-purpose-group .radio-option input[type="radio"]:checked ~ .radio-label {
+            color: #990013;
+        }
+
+        .heat-pump-purpose-group .radio-custom {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #cbd5e0;
+            border-radius: 50%;
+            background: white;
+            margin-bottom: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .heat-pump-purpose-group .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .heat-pump-purpose-group .radio-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #2d3748;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .heat-pump-purpose-group .radio-label i {
+            font-size: 28px;
+            color: #990013;
+            margin-bottom: 4px;
+        }
+
+        .heat-pump-purpose-group .radio-label span {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Button disabled state */
+        .btn-continue.disabled,
+        .btn-continue:disabled {
+            background: #e2e8f0 !important;
+            color: #a0aec0 !important;
+            border-color: #e2e8f0 !important;
+            cursor: not-allowed !important;
+            opacity: 0.6;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn-continue.disabled:hover,
+        .btn-continue:disabled:hover {
+            background: #e2e8f0 !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .heat-pump-purpose-group {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .building-type-group .radio-option {
+                padding: 14px 16px;
+            }
+
+            .heat-pump-purpose-group .radio-option {
+                min-height: 100px;
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</body>
+</html>
